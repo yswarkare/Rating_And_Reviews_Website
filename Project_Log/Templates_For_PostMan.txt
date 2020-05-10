@@ -1,0 +1,23 @@
+{
+	"admin": {
+	"firstName": "Stewart",
+    "middleName": "Gilligan",
+    "lastName": "Griffin",
+    "username": "stewiegriffin",
+    "emailId": "stewiegriffin@gmail.com",
+    "password": "stewie2580"
+	}
+}
+
+{
+	"user": {
+	"firstName": "Stewart",
+    "middleName": "Gilligan",
+    "lastName": "Griffin",
+    "username": "sggriffin",
+    "emailId": "sggriffin@gmail.com",
+    "password": "stewie2580"
+	}
+}
+
+Mongo URI mongodb+srv://userMayank:mayank5650@raingsandreviewsproject-notaz.mongodb.net/test?retryWrites=true&w=majority
