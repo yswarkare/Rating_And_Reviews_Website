@@ -47,37 +47,9 @@ router.post("/", userAuth, async (req, res) => {
         let pArr3 = subSubCategory1.products
         pArr3.push(product._id)
         await SubSubCategories.findOneAndUpdate({_id: req.body.product.subSubCategory}, {products: pArr3})
-        
+
         return res.json({message: "Product added successfully", success: true, product})
     } catch {
-        return res.json({message: "User is Unauthorized", success: false})
-    }
-})
-
-router.put("/:id", userAuth, async (req, res) => {
-    if (validateAdmin(req.user) === true){
-        await Products.findOneAndUpdate({_id: req.params.id}, {
-            productName : req.body.product.productName,
-            brandName: req.body.product.brandName,
-            productDescription : req.body.product.productDescription,
-            category: req.body.product.category,
-            subCategory : req.body.product.subCategory,
-            subSubCategory : req.body.product.subSubCategory,
-            image : req.body.product.image,
-            images: req.body.product.images
-        }).populate("category").populate("subCategory").populate("subSubCategory")
-        .then(product => res.json(product)).catch(err => console.log(err))
-    } else {
-        return res.json({message: "User is Unauthorized", success: false})
-    }
-})
-
-router.delete("/:id", userAuth, async (req, res) => {
-    if (validateAdmin(req.user) === true){
-        await Products.findOneAndRemove({_id: req.params.id})
-            .then(product => res.json(product))
-            .catch(err => console.log(err));
-    } else {
         return res.json({message: "User is Unauthorized", success: false})
     }
 })
