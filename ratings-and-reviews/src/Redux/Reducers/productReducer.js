@@ -95,16 +95,17 @@ let productReducer = ( state = productState, action ) => {
         case Update_Product:
             console.log(action.payload);
             let uIndex = stateCopy.editIndex;
-            let pArray = stateCopy.products;
-            let uProduct = action.payload.data.updated;
-            pArray[uIndex].productName = uProduct.productName;
-            pArray[uIndex].brandName = uProduct.brandName;
-            pArray[uIndex].image = uProduct.image;
-            pArray[uIndex].productDescription = uProduct.productDescription;
-            pArray[uIndex].category = uProduct.category;
-            pArray[uIndex].subCategory = uProduct.subCategory;
-            pArray[uIndex].subSubCategory = uProduct.subSubCategory;
-            stateCopy.products = pArray;
+            stateCopy.products[uIndex] = action.payload.data.updated
+            // let pArray = stateCopy.products;
+            // let uProduct = action.payload.data.updated;
+            // pArray[uIndex].productName = uProduct.productName;
+            // pArray[uIndex].brandName = uProduct.brandName;
+            // pArray[uIndex].image = uProduct.image;
+            // pArray[uIndex].productDescription = uProduct.productDescription;
+            // pArray[uIndex].category = uProduct.category;
+            // pArray[uIndex].subCategory = uProduct.subCategory;
+            // pArray[uIndex].subSubCategory = uProduct.subSubCategory;
+            // stateCopy.products = pArray;
             stateCopy.editProduct = false;
             console.log(stateCopy)
             return stateCopy

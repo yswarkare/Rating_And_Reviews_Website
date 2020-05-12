@@ -150,12 +150,39 @@ a {
 
 .add-product {
   display: grid;
-  grid-template-rows: auto;
-  grid-gap: 0.5rem;
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 0.25rem;
 }
 
 .add-description {
-  width: 60%;
+  width: 60%;;
+}
+
+.add-product-row-1, .add-product-row-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.25rem;
+  align-content: stretch;
+}
+
+.add-product-row-3-col-1, .add-product-row-3-col-2, .add-product-row-3-col-3 {
+  justify-content: stretch;
+  justify-self: stretch;
+  align-content: stretch;
+}
+
+.select-p-c-1 {
+  justify-content: stretch;
+  justify-self: stretch;
+  align-content: stretch;
+}
+
+.add-product-row-2 {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 0.25rem;
+  padding: 0rem;
+  margin: 0rem;
 }
 
 .header-navbar {
