@@ -42,14 +42,24 @@ class GiveRating extends Component {
       product: this.props.product._id,
       user: this.props.user._id
     }
-    this.props.postUserRating(rating);
+    let rating2 = {
+      _id: this.props.rating._id,
+      rating: value,
+      product: this.props.product._id,
+      user: this.props.user._id
+    }
+    this.props.setUserRating(rating)
+    if (this.props.ratings.userRatingExists === true) {
+      this.props.updateUserRating(rating2)
+    } else {
+      this.props.postUserRating(rating);
+    }
     this.setState({
       ratingValue: value
     })
   }
 
   onChangeSetHover = (e, hover) => {
-    // console.log("hover => "+hover)
     this.setState({
       hover: hover
     })
@@ -63,7 +73,7 @@ class GiveRating extends Component {
           <Rating
             name="simple-feedback"
             size="large"
-            value={this.props.rating.rating}
+            value={parseFloat(this.props.rating.rating)}
             precision ={0.5}
             onChange={(e)=>{this.onChangeSetUserRatingValue(e.target.value)}}
             onChangeActive={(e, hover)=>{this.onChangeSetHover(e, hover)}}/>
@@ -83,10 +93,12 @@ GiveRating.propTypes = {
   rating: PropTypes.object.isRequired,
   product: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
+  ratings: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
+    ratings: state.ratings,
     rating: state.ratings.rating,
     product: state.products.productObject,
     user: state.users.user

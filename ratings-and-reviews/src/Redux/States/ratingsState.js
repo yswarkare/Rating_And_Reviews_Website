@@ -1,5 +1,6 @@
 let ratingsState = {
     rating: {
+        _id: "",
         rating: "0",
         product: "",
         user: "",
@@ -8,6 +9,7 @@ let ratingsState = {
     ratingsCopy: [],
     userRatingExists: false,
     editRating: false,
+    userRatingExists: null,
     ratingErrors: {
         rating: {message: "", success: null},
         product: {message: "", success: null},
