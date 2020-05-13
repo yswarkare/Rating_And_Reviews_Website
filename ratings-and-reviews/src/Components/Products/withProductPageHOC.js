@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { sendProductId } from "../../Redux/Actions/productActions";
+import { getAllProducts, sendProductId } from "../../Redux/Actions/productActions";
 
 
 const withProductPageHOC = (WrappedProductPage) => {
     
     class withProductPageHOC extends Component {
 
-        componentDidMount = () => {
+        componentWillMount = () => {
+            this.props.getAllProducts()
             this.props.sendProductId(this.props.match.params.id)
         }
 
@@ -30,6 +31,7 @@ const withProductPageHOC = (WrappedProductPage) => {
         user: PropTypes.object.isRequired,
         loginStatus:  PropTypes.object.isRequired,
         match: PropTypes.object.isRequired,
+        getAllProducts: PropTypes.func.isRequired,
         sendProductId: PropTypes.func.isRequired,
     };
     
@@ -42,7 +44,7 @@ const withProductPageHOC = (WrappedProductPage) => {
         }
     }
     
-    return connect(mapStateToProps, { sendProductId })(withProductPageHOC);
+    return connect(mapStateToProps, { getAllProducts, sendProductId })(withProductPageHOC);
 }
 
 export default withProductPageHOC;

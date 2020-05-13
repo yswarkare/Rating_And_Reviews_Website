@@ -25,8 +25,8 @@ export const postUserRating = (rating) => async (dispatch) => {
     })
 }
 
-export const updateUserRating = () => async (dispatch) => {
-    let res = await api.patch("/ratings/get-rating")
+export const updateUserRating = (rating) => async (dispatch) => {
+    let res = await api.patch("/ratings/update-user-rating", rating)
     dispatch({
         type: Update_User_Rating,
         payload: res

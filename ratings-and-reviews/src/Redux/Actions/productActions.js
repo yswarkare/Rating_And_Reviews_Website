@@ -105,6 +105,7 @@ export const deleteProduct = (product) => async (dispatch) => {
 }
 
 export const sendProductId = (_id) => async (dispatch) => {
+    console.log(_id)
     dispatch({
         type: Send_Product_Id,
         payload: _id
