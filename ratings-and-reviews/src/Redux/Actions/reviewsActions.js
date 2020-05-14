@@ -1,10 +1,26 @@
-import { api } from "./axiosDefaults";
-import { Get_User_Review, Edit_User_Review, Set_User_Review, Post_User_Review, Update_User_Review, Delete_User_Review } from "./actionTypes";
+import { api, Axios } from "./axiosDefaults";
+import { Get_User_Review,
+    Get_Product_Reviews,
+    Edit_User_Review,
+    Set_User_Review,
+    Post_User_Review,
+    Update_User_Review,
+    Delete_User_Review } from "./actionTypes";
 
 export const getUserReview = (review) => async (dispatch) => {
+    console.log("get user review => "+ JSON.stringify(review))
     let res = await api.patch("/reviews/get-user-review", review)
     dispatch({
         type: Get_User_Review,
+        payload: res
+    })
+}
+
+export const getProductReviews = (product) => async (dispatch) => {
+    console.log("Product ID => " + JSON.stringify(product))
+    let res = await Axios.patch("/reviews/get-product-reviews", product);
+    dispatch({
+        type: Get_Product_Reviews,
         payload: res
     })
 }

@@ -1,11 +1,16 @@
 import React, { Component } from "react";
+// import PropTypes from "prop-types";
 import withProductPageHOC from "./withProductPageHOC";
 import GiveRating from "../Ratings/GiveRating";
 import ShowRating from "../Ratings/ShowRating";
 import UserReview from "../Reviews/UserReview";
+import ProductReviewsList from "../Reviews/ProductReviewsList";
 
 class ProductPage extends Component {
 
+    componentDidMount = () => {
+        // this.props.getAllProducts()
+    }
 
     render () {
         
@@ -44,12 +49,17 @@ class ProductPage extends Component {
                             }
                         </div>
                         <div className="product-reviews-list">
+                            <ProductReviewsList></ProductReviewsList>
                         </div>
                     </div>
                 </div>
             </div>
         )
     }
+}
+
+ProductPage.propTypes = {
+    
 }
 
 const WrappedProductPage = withProductPageHOC(ProductPage);

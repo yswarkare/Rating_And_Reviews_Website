@@ -6,11 +6,11 @@ export const User_Logged_In = "User_Logged_In";
 export const User_Logout = "User_Logout";
 export const User_Registration = "User_Registration";
 export const Set_User_First_Name = "Set_User_First_Name";
-export const Set_User_Middle_Name = "Set_User_Middle_Name"
-export const Set_User_Last_Name = "Set_User_Last_Name" 
-export const Set_User_Username = "Set_User_Username"
-export const Set_User_Email_Id = "Set_User_EmailId"
-export const Set_User_Password = "Set_User_Password"
+export const Set_User_Middle_Name = "Set_User_Middle_Name";
+export const Set_User_Last_Name = "Set_User_Last_Name";
+export const Set_User_Username = "Set_User_Username";
+export const Set_User_Email_Id = "Set_User_EmailId";
+export const Set_User_Password = "Set_User_Password";
 export const Register_User = "Register_User";
 export const Set_First_Password = "Set_First_Password";
 export const Set_Second_Password = "Set_Second_Password";
@@ -19,7 +19,7 @@ export const Get_Login_Password = "Get_Login_Password";
 export const Set_Login_Redirect = "Set_Login_Redirect";
 
 //* Profile Update actions
-export const Set_User_Update = "Set_User_Update"
+export const Set_User_Update = "Set_User_Update";
 export const Set_Update_First_Name = "Set_Update_First_Name";
 export const Set_Update_Middle_Name = "Set_Update_Middle_Name";
 export const Set_Update_Last_Name = "Set_Update_Last_Name";
@@ -36,7 +36,7 @@ export const Update_User_Password = "Update_User_Password";
 //| Categories Action Types
 
 // Categories
-export const Get_All_Categories = "Get_All_Categories"
+export const Get_All_Categories = "Get_All_Categories";
 export const Set_Category_Name = "Set_Category_Name";
 export const Add_Category_Name = "Add_Category_Name";
 export const Update_Category_Name = "Update_Category_Name";
@@ -44,7 +44,7 @@ export const Delete_Category = "Delete_Category";
 export const Edit_Category = "Edit_Category";
 
 // Sub-Categories
-export const Get_All_Sub_Categories = "Get_All_Sub_Categories"
+export const Get_All_Sub_Categories = "Get_All_Sub_Categories";
 export const Set_Sub_Category_Name = "Set_Sub_Category_Name";
 export const Add_Sub_Category_Name = "Add_Sub_Category_Name";
 export const Update_Sub_Category_Name = "Update_Sub_Category_Name";
@@ -52,7 +52,7 @@ export const Delete_Sub_Category = "Delete_Sub_Category";
 export const Edit_Sub_Category = "Edit_Sub_Category";
 export const Set_Category_In_Sub_Category = "Set_Category_In_Sub_Category";
 // Sub-Sub-Categories
-export const Get_All_Sub_Sub_Categories = "Get_All_Sub_Sub_Categories"
+export const Get_All_Sub_Sub_Categories = "Get_All_Sub_Sub_Categories";
 export const Set_Sub_Sub_Category_Name = "Set_Sub_Sub_Category_Name";
 export const Add_Sub_Sub_Category_Name = "Add_Sub_Sub_Category_Name";
 export const Update_Sub_Sub_Category = "Update_Sub_Sub_Category";
@@ -64,6 +64,7 @@ export const Set_Sub_Category_In_Sub_Sub_Category = "Set_Sub_Category_In_Sub_Sub
 //| Product Action types
 
 export const Get_All_Products = "Get_All_Products";
+export const Get_Product = "Get_Product";
 export const Set_Product_Name = "Set_Product_Name";
 export const Set_Brand_Name = "Set_Brand_Name";
 export const Set_Product_Image = "Set_Product_Image";
@@ -83,7 +84,8 @@ export const Get_User_Rating = "Get_User_Rating";
 export const Edit_User_Review = "Edit_User_Review";
 export const Set_User_Rating = "Set_User_Rating";
 export const Post_User_Rating = "Post_User_Rating";
-export const Update_User_Rating= "Update_User_Rating"
+export const Update_User_Rating = "Update_User_Rating";
+export const Get_Product_Reviews = "Get_Product_Reviews";
 
 //| Reviews Action Types
 

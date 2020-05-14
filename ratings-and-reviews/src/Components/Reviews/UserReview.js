@@ -57,12 +57,14 @@ class UserReview extends Component {
                     <div className="review-box">
                         { 
                             this.props.reviews.reviewExists === true && this.props.reviews.editReview === false &&
-                            <div>
-                                <div><p>{this.props.review.review}</p></div>
+                            <div className="show-user-review">
                                 <div className="user-review-buttons">
+                                    <div>{this.props.review.user.username}</div>
                                     <div><Button onClick={()=>{this.onClickEditUserReview()}} variant="contained" color="primary">Edit</Button></div>
                                     <div><Button onClick={()=>{this.onClickDeleteUserReview()}} variant="contained" color="primary">Delete</Button></div>
+                                    <div>{this.props.review.createdAt}</div>
                                 </div>
+                                <div><p>{this.props.review.review}</p></div>
                             </div>
                         }
                         {   
@@ -112,7 +114,7 @@ const mapStateToProps = (state) => {
     return {
         reviews: state.reviews,
         review: state.reviews.review,
-        product: state.products.productObject,
+        product: state.products.product,
         user: state.users.user,
     }
 }

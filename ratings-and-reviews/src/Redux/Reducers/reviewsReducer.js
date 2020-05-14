@@ -1,5 +1,6 @@
 import reviewsState from "../States/reviewsState";
 import { Get_User_Review,
+    Get_Product_Reviews,
     Edit_User_Review,
     Set_User_Review,
     Post_User_Review,
@@ -14,10 +15,28 @@ let reviewsReducer = ( state = reviewsState, action ) => {
         case Get_User_Review:
             console.log(action.payload);
             if (action.payload.data.success === true){
-                state.review = action.payload.data.review[0];
-                state.reviewExists = true;
+                if(action.payload.data.review[0] === undefined){
+                    state.reviewExists = false;
+                } else {
+                    state.review = action.payload.data.review[0];
+                    state.reviewExists = true;
+                }
             } else {
                 state.reviewExists = false;
+            }
+            console.log(state);
+            return state;
+
+        case Get_Product_Reviews:
+            console.log(action.payload);
+            state.productReviews = action.payload.data.reviews
+            if(state.productReviews[0] === undefined){
+                let pReviews= {
+                    review: "",
+                    user: {username: ""},
+                    date: ""
+                }
+                state.productReviews.push(pReviews)
             }
             console.log(state);
             return state;
@@ -33,6 +52,7 @@ let reviewsReducer = ( state = reviewsState, action ) => {
             state.review.review = action.payload.review;
             state.review.product = action.payload.product;
             state.review.user = action.payload.user;
+            state.review.date = new Date()
             console.log(state);
             return state;
 
