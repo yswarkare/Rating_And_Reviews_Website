@@ -1,0 +1,23 @@
+{
+  "name": "rating_and_reviews_website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd ratings-and-reviews && npm run start\" \"cd Backend && npm run dev\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yswarkare/Rating_And_Reviews_Website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yswarkare/Rating_And_Reviews_Website/issues"
+  },
+  "homepage": "https://github.com/yswarkare/Rating_And_Reviews_Website#readme",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
