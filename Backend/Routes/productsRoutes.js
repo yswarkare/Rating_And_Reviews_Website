@@ -11,10 +11,19 @@ const { userAuth } = require("../Utils/Auth");
 
 router.get("/", async (req, res) => {
     try {
-        let products = await Products.find().populate("category").populate("subCategory").populate("subSubCategory")
+        let products = await Products.find().populate("category").populate("subCategory").populate("subSubCategory").populate("allRatings").populate("reviews")
         return res.json({products, message: "Got list of all products", success: true})
     } catch {
         return res.json({message: "Failed to get list of all products", success: false})
+    }
+})
+
+router.patch("/get-product", async (req, res) => {
+    try {
+        let product = await Products.findOne({_id: req.body._id}).populate("category").populate("subCategory").populate("subSubCategory").populate("allRatings").populate("reviews")
+        return res.json({message: "Got Product Details Successfully", success: true, product}); 
+    } catch (err) {
+        return res.json({message: "Failed to get proeuct", success: false, error: `${err}`});
     }
 })
 
@@ -80,7 +89,7 @@ router.patch("/add-image", userAuth, async (req, res) => {
 })
 
 router.patch("/update-product", userAuth, async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     let product1 = await Products.findOne({_id: req.body.product._id})
     try {
         if (product1.category !== req.body.product.category) {
@@ -157,7 +166,7 @@ router.patch("/update-product", userAuth, async (req, res) => {
 })
 
 router.patch("/delete-product", userAuth, async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     let product1 = await Products.findOne({_id: req.body.product._id})
     try {        
         let category1 = await Categoreies.findOne({_id: product1.category})

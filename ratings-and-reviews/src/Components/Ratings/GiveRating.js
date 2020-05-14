@@ -100,7 +100,7 @@ const mapStateToProps = (state) => {
   return {
     ratings: state.ratings,
     rating: state.ratings.rating,
-    product: state.products.productObject,
+    product: state.products.product,
     user: state.users.user
   }
 }

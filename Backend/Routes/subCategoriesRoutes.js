@@ -97,8 +97,9 @@ router.patch("/delete-sub-category", userAuth, async (req, res) => {
         await Categories.findOneAndUpdate({_id: subCategory1.category}, {subCategories: sCArray});
         let deleted = await SubCategories.findOneAndDelete({_id: req.body._id})
         return res.json({message: "Sub-Category deleted successfully", success: true, deleted})
-    } catch {
-        return res.json({message: "Unabe to delete sub-category", success: false})
+    } catch (err) {
+        console.log(err);
+        return res.json({message: "Unabe to delete sub-category", success: false, error: `${err}`})
     }
 })
 

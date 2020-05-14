@@ -69,6 +69,7 @@ router.post("/post-user-rating", userAuth, async (req, res) => {
 router.patch("/update-user-rating", userAuth, async (req, res) => {
     console.log(req.body);
     try {
+        let rating2 = await Ratings.findOne({_id: req.body._id})
         await Ratings.findOneAndUpdate({_id: req.body._id}, {
             rating : req.body.rating
         })
@@ -76,6 +77,8 @@ router.patch("/update-user-rating", userAuth, async (req, res) => {
         try {
             let product1 = await Products.findOne({_id: req.body.product})
             let ratings1 = product1.ratings
+            let rating3 = (ratings1[(2 * rating2.rating)] - 1)
+            ratings1[(2 * rating2.rating)] = rating3
             let rating1 = (ratings1[(2 * req.body.rating)] + 1)
             ratings1[(2 * req.body.rating)] = rating1
             let avgRating1 = await averageRating(ratings1)
