@@ -2,6 +2,9 @@
   "name": "rating_and_reviews_website",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "12.16.3"
+  },
   "main": "./Backend/server.js",
   "scripts": {
     "dev": "concurrently \"cd ratings-and-reviews && npm run start\" \"cd Backend && npm run dev\"",
