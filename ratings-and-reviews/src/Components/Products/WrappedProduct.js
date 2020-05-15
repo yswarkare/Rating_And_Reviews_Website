@@ -20,7 +20,7 @@ class Product extends Component {
                 <CardSubtitle>{this.props.product.productName}</CardSubtitle>
                 <CardText></CardText>
                 {/* Remove this button not needed */}
-                <Button>Button</Button>
+               {/*  <Button>Button</Button> */}
                 </CardBody>
             </Card>
             </Link>

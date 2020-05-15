@@ -32,6 +32,11 @@ ul.admin-navbar.nav{
 }
 
 
+/*Homepage Search box width set*/
+div.input-group{
+  width: 35rem;
+}
+
 .App {
   text-align: center;
   background-color: #ffffff;
