@@ -1,16 +1,26 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+const { mongoURI } = require("./Config/config")
 const cors = require("cors");
 const { success, error } = require("consola");
 const passport = require("passport");
 const { strategy } = require("./middlewares/passport");
+const path = require("path");
 
 
 const app = express()
 
 app.use(express.json());
-dotenv.config();
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static("ratings-and-reviews/build"));
+    
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "ratings-and-reviews", "build", "index.html"));
+    })
+}
+
+
 app.use(cors());
 app.use(passport.initialize());
 
@@ -18,7 +28,7 @@ passport.use(
     strategy
 );
 
-const uri = process.env.mongoURI;
+const uri = mongoURI;
 
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false })
 .then(()=>success({message: `MongoDB Database Connection Established Successfully with database \n${uri}`, badge: true}))

@@ -2,9 +2,12 @@
   "name": "rating_and_reviews_website",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./Backend/server.js",
   "scripts": {
     "dev": "concurrently \"cd ratings-and-reviews && npm run start\" \"cd Backend && npm run dev\"",
+    "client-install": "npm install --prefix ratings-and-reviews",
+    "backend-install": "npm install --prefix Backend",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ratings-and-reviews && npm install --prefix Backend && npm run build --prefix ratings-and-reviews",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
