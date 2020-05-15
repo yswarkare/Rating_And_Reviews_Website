@@ -1,26 +1,32 @@
 {
-  "name": "rating_and_reviews_website",
+  "name": "Backend",
   "version": "1.0.0",
   "description": "",
-  "main": "./Backend/server.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "concurrently \"cd ratings-and-reviews && npm run start\" \"cd Backend && npm run dev\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
     "client-install": "npm install --prefix ratings-and-reviews",
-    "backend-install": "npm install --prefix Backend",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ratings-and-reviews && npm install --prefix Backend && npm run build --prefix ratings-and-reviews",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev2": "concurrently \"cd ratings-and-reviews && npm run start\" \"npm run dev\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ratings-and-reviews && npm run build --prefix ratings-and-reviews"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yswarkare/Rating_And_Reviews_Website.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yswarkare/Rating_And_Reviews_Website/issues"
-  },
-  "homepage": "https://github.com/yswarkare/Rating_And_Reviews_Website#readme",
   "dependencies": {
-    "concurrently": "^5.2.0"
+    "bcryptjs": "^2.4.3",
+    "consola": "^2.12.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.13",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "validator": "^13.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }
