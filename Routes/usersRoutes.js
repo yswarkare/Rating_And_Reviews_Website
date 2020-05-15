@@ -114,7 +114,8 @@ router.get("/is-user-logged-in", userAuth, async (req, res) => {
 router.get("/get-user-info", userAuth, async (req, res) => {
     // console.log("User in req => "+ req.user);
     try {
-        let user = await Users.findOne({_id: req.user._id})
+        // let user = await Users.findOne({_id: req.user._id})
+        let user = req.user
         return res.json({user, message: "Got User Info Successfully", success: true});
     } catch (err) {
         return res.json({message: "Failed To Get User Info", success: false, error: err});
@@ -132,7 +133,7 @@ router.patch("/update-user-name", userAuth, async (req, res) => {
             middleName: req.body.user.middleName,
             lastName: req.body.user.lastName
         })
-        return res.json({updated, message: "Name of User Updated Successfull", success: true})
+        return res.json({updated, message: "Name of User Updated Successfully", success: true})
     } catch {
         return res.json({message: "Unable to Update Name of User", success: false})
     }
@@ -187,7 +188,7 @@ router.patch("/update-user-password", userAuth, async (req, res) => {
         let updated = await Users.findOneAndUpdate({_id: req.user}, {password, newHashedPassword})
         return res.json({updated, message: "Password changed successfully", success: true})
     } catch {
-        return res.json({message: "Unable to update password", success: fasle})
+        return res.json({message: "Unable to update password", success: false})
     }
 })
 
