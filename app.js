@@ -5,7 +5,7 @@ const cors = require("cors");
 const { success, error } = require("consola");
 const passport = require("passport");
 const { strategy } = require("./middlewares/passport");
-const path = require("path");
+// const path = require("path");
 
 
 const app = express()
