@@ -1,0 +1,93 @@
+
+	MongoDB Schema
+
+	Four Collections
+
+	Categories - List of categories and sub-categories
+	
+		1. category: {
+			categoryName: { type: String, unique: true, required: true, trim: true },
+			products: [{type: Schema.Types.ObjectId, ref: "Products"}],
+			subCategories: [{type: Schema.Types.ObjectId, ref: "SubCategories"}]
+		}
+		
+		2. subCategories: {
+			subCategoryName: { type: String, unique: true, required: true, trim: true },
+			Products: [{type: Schema.Types.ObjectId, ref: "Products"}],
+			subSubCategories: [{type: Schema.Types.ObjectId, ref: "SubSubCategories"}]
+		}
+		
+		3. subSubCategories: {
+			subSubCategoryName: { type: String, unique: true, required: true, trim: true },
+			Products: [{type: Schema.Types.ObjectId, ref: "Products"}],		
+		}
+
+	Products - List of Products
+
+		4. product: {
+			productName : { type: String, unique: true, required: true, trim: true },
+			brandName: { type: String, unique: true, required: true, trim: true },
+			productDescription : { type: String, required: true, trim: true },
+			category: {type: Schema.Types.ObjectId, ref: "Categories"},
+			subCategory : {type: Schema.Types.ObjectId, ref: "SubCategories"},
+			subSubCategory : {type: Schema.Types.ObjectId, ref: "SubSubCategories"},
+			ratings: [{type: Schema.Types.ObjectId, ref: "Ratings"}],
+			reviews: [{type: Schema.Types.ObjectId, ref: "Reviews"}]
+		}
+
+	Users - List of Users
+
+		5. admin: {
+				fullName : {
+					firstName: { type: String, required: true, trim: true },
+					middleName: { type: String, required: true,trim: true },
+					lastName: { type: String, required: true, trim: true }
+				},
+				emailId : { type: String, unique: true, required: true, trim: true },
+				password : { type: String, unique: true, required: true, trim: true },
+				ratings: [{type: Schema.Types.ObjectId, ref: "Ratings"}],
+				reviews: [{type: Schema.Types.ObjectId, ref: "Reviews"}]
+			}
+
+		6. User: {
+			fullName : {
+				firstName: { type: String, required: true, trim: true },
+				middleName: { type: String, trim: true },
+				lastName: { type: String, required: true, trim: true }
+			},
+			emailId : { type: String, unique: true, required: true, trim: true },
+			password : { type: String, unique: true, required: true, trim: true }
+			ratings: [{type: Schema.Types.ObjectId, ref: "Ratings"}],
+			reviews: [{type: Schema.Types.ObjectId, ref: "Reviews"}]
+		}
+
+
+	7. ratings: {
+		rating: { type: String, required: true, trim: true },
+		productId: {type: Schema.Types.ObjectId, ref: "Products"},
+		userId: {type: Schema.Types.ObjectId, ref: "Users"},
+	}
+	
+	8. reviews: {
+		review: { type: String, required: true, trim: true },
+		likes: { type: Number, required: true, trim: true },
+		dislikes: { type: Number, required: true, trim: true }
+		date: { type: Date, required: true },
+		productId: {type: Schema.Types.ObjectId, ref: "Products"},
+		userName: {type: Schema.Types.ObjectId, ref: "Users"},
+	}
+
+
+	9. Ratings and Reviews for Product
+		Ratings and Reviews Product: {
+			Product: {type: Schema.Types.ObjectId, ref: "Products"},
+			averageRating : Number,
+			Reviews : [ All Reviews ]
+		}
+
+	10. Ratings and Reviews for User
+		Ratings and Reviews User: {
+			User ID : from User Collection,
+			averageRating : Number,
+			Reviews : [ All Reviews ]
+		}

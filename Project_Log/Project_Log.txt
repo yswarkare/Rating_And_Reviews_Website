@@ -1,0 +1,24 @@
+	
+	Ratings and Reviews Website
+	
+	Packages Installed
+	
+		Backend - 
+		
+			1. express
+			2. cors
+			3. mongoose
+			4. dotenv
+			5. nodemon (as dev dependency)
+		
+		Frontend -
+		
+			1. redux 
+			2. react-redux
+			3. redux-thunk
+			4. axios
+			5. react-router-dom
+			6. bootstrap
+			7. reactstrp
+		
+			
