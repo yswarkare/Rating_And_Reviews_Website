@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Products = require("../Models/Products");
-const Categoreies = require("../Models/Categories");
+const Categories = require("../Models/Categories");
 const SubCategories = require("../Models/SubCategories");
 const SubSubCategories = require("../Models/SubSubCategories");
 const { validateAdmin } = require("../Utils/Validations");
@@ -23,7 +23,7 @@ router.patch("/get-product", async (req, res) => {
         let product = await Products.findOne({_id: req.body._id}).populate("category").populate("subCategory").populate("subSubCategory").populate("allRatings").populate("reviews")
         return res.json({message: "Got Product Details Successfully", success: true, product}); 
     } catch (err) {
-        return res.json({message: "Failed to get proeuct", success: false, error: `${err}`});
+        return res.json({message: "Failed to get product", success: false, error: `${err}`});
     }
 })
 
@@ -44,10 +44,10 @@ router.post("/", userAuth, async (req, res) => {
         let product = await Products.findOne({_id: product1._id}).populate("category").populate("subCategory").populate("subSubCategory");
         // Add id in categories
         try {
-            let category1 = await Categoreies.findOne({_id: req.body.product.category});
+            let category1 = await Categories.findOne({_id: req.body.product.category});
             let pArr1 = category1.products
             pArr1.push(product._id)
-            await Categoreies.findOneAndUpdate({_id: req.body.product.category}, {products: pArr1});
+            await Categories.findOneAndUpdate({_id: req.body.product.category}, {products: pArr1});
         } catch (err){
             console.log(err);
         }
@@ -93,11 +93,11 @@ router.patch("/update-product", userAuth, async (req, res) => {
     let product1 = await Products.findOne({_id: req.body.product._id})
     try {
         if (product1.category !== req.body.product.category) {
-            let category1 = await Categoreies.findOne({_id: product1.category})
+            let category1 = await Categories.findOne({_id: product1.category})
             let pArr1 = category1.products;
             let index1 = pArr1.indexOf(req.body.product._id);
             pArr1.splice(index1, 1);
-            await Categoreies.findOneAndUpdate({_id: product1.category}, {products: pArr1});
+            await Categories.findOneAndUpdate({_id: product1.category}, {products: pArr1});
         }
     } catch (error) {
         console.log(error);
@@ -136,10 +136,10 @@ router.patch("/update-product", userAuth, async (req, res) => {
         })
         let updated = await Products.findOne({_id: req.body.product._id}).populate("category").populate("subCategory").populate("subSubCategory");
         try {
-            let category2 = await Categoreies.findOne({_id: req.body.product.category})
+            let category2 = await Categories.findOne({_id: req.body.product.category})
             let pArray1 = category2.products;
             pArray1.push(updated._id);
-            await Categoreies.findOneAndUpdate({_id: req.body.product.category}, {products: pArray1})
+            await Categories.findOneAndUpdate({_id: req.body.product.category}, {products: pArray1})
         } catch (error) {
             console.log(error);
         }
@@ -169,11 +169,11 @@ router.patch("/delete-product", userAuth, async (req, res) => {
     // console.log(req.body);
     let product1 = await Products.findOne({_id: req.body.product._id})
     try {        
-        let category1 = await Categoreies.findOne({_id: product1.category})
+        let category1 = await Categories.findOne({_id: product1.category})
         let pArr1 = category1.products;
         let index1 = pArr1.indexOf(req.body.product._id);
         pArr1.splice(index1, 1);
-        await Categoreies.findOneAndUpdate({_id: product1.category}, {products: pArr1});
+        await Categories.findOneAndUpdate({_id: product1.category}, {products: pArr1});
     } catch (error) {
         console.log(error);
     }
