@@ -1,3 +1,4 @@
+
 /* Entire navbar heading*/
 .header{
   background: rgba(0, 0, 0, 0.849);
@@ -36,6 +37,7 @@ ul.admin-navbar.nav{
 div.input-group{
   width: 35rem;
 }
+
 
 .App {
   text-align: center;
