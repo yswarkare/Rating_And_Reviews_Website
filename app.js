@@ -82,7 +82,7 @@ app.use("/api/ratings", ratingsRouter);
 
 const reviewsRouter = require("./Routes/reviewsRoutes");
 
-app.use("/api/api/reviews", reviewsRouter);
+app.use("/api/reviews", reviewsRouter);
 
 
 module.exports = app;
