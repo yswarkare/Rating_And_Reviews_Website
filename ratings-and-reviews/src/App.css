@@ -1,3 +1,37 @@
+/* Entire navbar heading*/
+.header{
+  background: rgba(0, 0, 0, 0.849);
+}
+/*Homepage Heading in h1 and hover ----1st heading*/
+
+.header h1{
+  color: white;
+}
+.header h1:hover{
+color: green;
+text-decoration-line: none;
+}
+
+/* Homepage Changing text-color of class header-navbar admin-navbar ----2nd and 3rd heading*/
+
+li.nav-item a{
+  color: red;
+  /* font-size: medium;
+  font-weight: 300;
+  font-family: 'Arial Narrow Bold'; */
+}
+li.nav-item a:hover{
+  color:green;
+}
+/* ul.nav{
+ 
+} */
+/*Admin-user 3rd navbar*/
+ul.admin-navbar.nav{
+  background: black;
+}
+
+
 .App {
   text-align: center;
   background-color: #ffffff;
