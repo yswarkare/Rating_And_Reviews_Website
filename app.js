@@ -40,43 +40,43 @@ mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTo
 
 const adminsRouter = require("./Routes/adminsRoutes");
 
-app.use("/api/admins", adminsRouter);
+app.use("/admins", adminsRouter);
 
 // Users Router
 
 const usersRouter = require("./Routes/usersRoutes");
 
-app.use("/api/users", usersRouter);
+app.use("/users", usersRouter);
 
 // Categories Router
 
 const categoriesRouter = require("./Routes/categoriesRoutes");
 
-app.use("/api/categories", categoriesRouter);
+app.use("/categories", categoriesRouter);
 
 // SubCategories Router
 
 const subCategoriesRouter = require("./Routes/subCategoriesRoutes");
 
-app.use("/api/sub-categories", subCategoriesRouter);
+app.use("/sub-categories", subCategoriesRouter);
 
 // SubSubCategories Router
 
 const subSubCategoriesRouter = require("./Routes/subSubCategoriesRoutes");
 
-app.use("/api/sub-sub-categories", subSubCategoriesRouter);
+app.use("/sub-sub-categories", subSubCategoriesRouter);
 
 // Products Router
 
 const productsRouter = require("./Routes/productsRoutes");
 
-app.use("/api/products", productsRouter);
+app.use("/products", productsRouter);
 
 // Reviews Router
 
 const ratingsRouter = require("./Routes/ratingsRoutes");
 
-app.use("/api/ratings", ratingsRouter);
+app.use("/ratings", ratingsRouter);
 
 // Reviews Router
 
