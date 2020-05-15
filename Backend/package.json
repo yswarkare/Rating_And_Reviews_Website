@@ -1,5 +1,5 @@
 {
-  "name": "Backend",
+  "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -8,7 +8,6 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "client-install": "npm install --prefix ratings-and-reviews",
-    "dev": "concurrently \"cd ratings-and-reviews && npm run start\" \"npm run dev\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ratings-and-reviews && npm run build --prefix ratings-and-reviews"
   },
   "keywords": [],
