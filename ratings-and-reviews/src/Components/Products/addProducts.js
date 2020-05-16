@@ -234,7 +234,7 @@ class AddProducts extends Component {
                                 return (
                                     <tr key={index}>
                                         <th>{index}</th>
-                                        <td><img href={`${product.image}`} className="product-image-in-list" alt="Product Image"/></td>
+                                        <td><img src={`${product.image}`} className="product-image-in-list" alt="Product Image"/></td>
                                         <td>{product.productName}</td>
                                         <td>{product.brandName}</td>
                                         <td>{product.productDescription}</td>
