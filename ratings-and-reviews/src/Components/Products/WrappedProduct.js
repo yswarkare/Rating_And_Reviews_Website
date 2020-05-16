@@ -17,8 +17,8 @@ class Product extends Component {
 
                <CardImg top width="100%" src={this.props.product.image} alt="loading image.." />
                 <CardBody>
-                <CardTitle>{this.props.product.brandName}</CardTitle>
-                <CardSubtitle>{this.props.product.productName}</CardSubtitle>
+                {/* <CardTitle>{this.props.product.brandName}</CardTitle> */}
+                <CardSubtitle>{this.props.product.brandName} {this.props.product.productName}</CardSubtitle>
                 <CardText></CardText>
                 {/* Remove this button not needed */}
                {/*  <Button>Button</Button> */}
