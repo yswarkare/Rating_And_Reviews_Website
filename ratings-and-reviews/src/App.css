@@ -37,8 +37,13 @@ ul.admin-navbar.nav{
 div.input-group{
   width: 35rem;
 }
-
-
+/*
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+*/
 .App {
   text-align: center;
   background-color: #ffffff;
