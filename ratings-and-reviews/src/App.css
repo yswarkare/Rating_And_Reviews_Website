@@ -116,15 +116,15 @@ a {
   padding-top: 30px;
   padding-bottom: 20px;
   margin-bottom: 2rem;
-  /* border-style: solid;
-  border-width: thin; */
+   border-style: solid;
+  border-width: thin;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
   grid-gap: 0.5rem;
   /* padding: 0.5rem; */
-  width: 30%;
+  width: 25%;
   height:80%;
   align-self: center;
 }
