@@ -102,7 +102,7 @@ class AddProducts extends Component {
 
     render(){
         return(
-            <div className="add-products-container mt-5">
+            <div className="add-products-container mt-2">
                 <div className="add-product">
                     <div className="add-product-row-1">
                         <div className="add-product-row-1-col-1">
