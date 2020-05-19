@@ -199,7 +199,7 @@ class AddProducts extends Component {
                         <div className="add-product-row-4-col-1">
                             {
                                 this.props.products.editProduct === false &&
-                                <Button onClick={()=>{this.onClickAddProduct()}} variant="contained" divor="primary">
+                                <Button onClick={()=>{this.onClickAddProduct()}} variant="outline-success" divor="primary">
                                     Add Product
                                 </Button>
                             }
@@ -212,7 +212,7 @@ class AddProducts extends Component {
                         </div>
                     </div>
                 </div>
-                <Container className="mt-3">
+                <Container className="mt-3 display-in-tables">
                     <Table>
                         <thead>
                             <tr>
