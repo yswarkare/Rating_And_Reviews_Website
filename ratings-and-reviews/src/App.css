@@ -159,10 +159,14 @@ a {
 
 .categories-tab-panel-list {
   list-style: none;
+  background-color: #f2f2f2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0.5rem;
   justify-content: center;
+}
+.categories-table{
+  background-color: #f2f2f2;
 }
 
 #categories-table, #categories-table-body {
@@ -182,6 +186,7 @@ a {
 
 .add-categories {
   display: grid;
+  background-color: #f2f2f2;
   grid-template-columns: 5fr 1fr;
   grid-gap: 0.5rem;
   padding: 0.5rem;
