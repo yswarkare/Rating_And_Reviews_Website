@@ -35,7 +35,7 @@ ul.admin-navbar.nav{
 
 /*Homepage Search box width set*/
 div.input-group{
-  width: 35rem;
+  width: 50%;
 }
 
 .card-img-top {
@@ -101,7 +101,13 @@ a {
   justify-content: right;
   align-items: center;
 }
-
+.user-profile{
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
 .user-login-container{
   display: flex;
   justify-content: center;
