@@ -243,14 +243,14 @@ class AddProducts extends Component {
                                         <td>{product.subSubCategory.subSubCategoryName}</td>
                                         <td>
                                         <Tooltip title="Edit">
-                                            <IconButton onClick={()=>{this.onClickEditProduct(index)}}>
+                                            <IconButton color="primary" onClick={()=>{this.onClickEditProduct(index)}}>
                                                 <EditIcon></EditIcon>
                                             </IconButton>
                                         </Tooltip>
                                         </td>
                                         <td>
                                         <Tooltip title="Delete">
-                                            <IconButton onClick={()=>{this.onClickDeleteProduct(index, product)}}>
+                                            <IconButton color="secondary" onClick={()=>{this.onClickDeleteProduct(index, product)}}>
                                                 <DeleteIcon></DeleteIcon>
                                             </IconButton>
                                         </Tooltip>
