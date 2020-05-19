@@ -222,6 +222,9 @@ a {
 .add-product-row-1{
   margin-top: 2rem;
 }
+.display-in-tables{
+  background-color: #f2f2f2;
+}
 
 .add-description {
   width: 60%;;
