@@ -199,13 +199,13 @@ class AddProducts extends Component {
                         <div className="add-product-row-4-col-1">
                             {
                                 this.props.products.editProduct === false &&
-                                <Button onClick={()=>{this.onClickAddProduct()}} color="success" variant="outlined" divor="primary">
+                                <Button onClick={()=>{this.onClickAddProduct()}} color="secondary" variant="outlined" divor="primary">
                                     Add Product
                                 </Button>
                             }
                             {
                                 this.props.products.editProduct === true &&
-                                <Button onClick={()=>{this.onClickAddProduct()}} color="danger" variant="outlined" divor="primary">
+                                <Button onClick={()=>{this.onClickAddProduct()}} color="secondary" variant="outlined" divor="primary">
                                     Save Product
                                 </Button>
                             }
