@@ -2,8 +2,8 @@ import { Set_Sub_Category_Name, Set_Category_In_Sub_Category, Add_Sub_Category_N
 import { api, Axios } from "./axiosDefaults";
 
 
-export const getAllSubCategories = (admin) => async (dispatch) => {
-    let res = await Axios.get(`/sub-categories`, admin)
+export const getAllSubCategories = () => async (dispatch) => {
+    let res = await Axios.get(`/sub-categories`)
     dispatch({
         type: Get_All_Sub_Categories,
         payload: res

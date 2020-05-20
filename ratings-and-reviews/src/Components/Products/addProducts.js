@@ -26,13 +26,9 @@ class AddProducts extends Component {
 
     componentDidMount = () => {
         this.props.getAllProducts()
-        let admin = {
-            emailId: this.props.loginStatus.emailId,
-            headers: this.props.headers
-        }
-        this.props.getAllCategories(admin);
-        this.props.getAllSubCategories(admin);
-        this.props.getAllSubSubCategories(admin)
+        this.props.getAllCategories();
+        this.props.getAllSubCategories();
+        this.props.getAllSubSubCategories()
     }
 
     onChangeSetProductName = (productName) => {
