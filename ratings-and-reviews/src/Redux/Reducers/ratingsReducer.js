@@ -5,6 +5,7 @@ let ratingsReducer = ( state = ratingsState, action ) => {
     let stateCopy = JSON.parse(JSON.stringify(state));
 
     switch (action.type) {
+        
         case Get_User_Rating:
             console.log(action.payload);
             if (action.payload.data.rating ) {
