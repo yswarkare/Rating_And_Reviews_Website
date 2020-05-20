@@ -81,6 +81,11 @@ let productReducer = ( state = productState, action ) => {
             stateCopy.products.push(action.payload.data.product);
             stateCopy.filters_1.filterSubCategories = false;
             stateCopy.filters_1.filterSubSubCategories = false;
+            stateCopy.product._id = "";
+            stateCopy.product.productName = "";
+            stateCopy.product.brandName = "";
+            stateCopy.product.image = "";
+            stateCopy.product.productDescription = "";
             console.log(stateCopy)
             return stateCopy;
 

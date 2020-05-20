@@ -21,6 +21,8 @@ let categoriesReducer = ( state = categoriesState, action ) => {
         case Add_Category_Name:
             console.log(action.payload);
             stateCopy.categories.push(action.payload.data.category);
+            stateCopy.category._id = "";
+            stateCopy.category.categoryName = "";
             console.log(stateCopy);
             return stateCopy;
 
