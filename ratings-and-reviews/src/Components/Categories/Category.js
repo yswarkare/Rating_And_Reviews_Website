@@ -6,10 +6,18 @@ import { Tooltip, IconButton, Button, TextField } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Container, Row, Col } from 'reactstrap';
-import { addCategory, setCategory, getAllCategories, updateCategoryName, deleteCategory, editCategory } from "../../Redux/Actions/categoriesActions";
+import { getAllSubCategories } from "../../Redux/Actions/subCategoriesActions";
+import { getAllSubSubCategories } from "../../Redux/Actions/subSubCategoriesActions";
+import { getAllSubCategories, addCategory, setCategory, getAllCategories, updateCategoryName, deleteCategory, editCategory } from "../../Redux/Actions/categoriesActions";
 
 
 class Category extends Component {
+
+    componentDidMount = () => {
+        this.props.getAllCategories();
+        this.props.getAllSubCategories();
+        this.props.getAllSubSubCategories()
+    }
 
     onChangeSetCategory = (categoryName) => {
         this.props.setCategory(categoryName);
@@ -94,6 +102,9 @@ class Category extends Component {
 Category.propTypes = {
     categories: PropTypes.object.isRequired,
     category: PropTypes.object.isRequired,
+    getAllCategories: PropTypes.func.isRequired,
+    getAllSubCategories: PropTypes.func.isRequired,
+    getAllSubSubCategories: PropTypes.func.isRequired,
     setCategory: PropTypes.func.isRequired,
     addCategory: PropTypes.func.isRequired,
     updateCategoryName: PropTypes.func.isRequired,
@@ -108,4 +119,13 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { addCategory, setCategory, getAllCategories, updateCategoryName, deleteCategory, editCategory })(Category);
+export default connect(mapStateToProps, {
+    getAllCategories,
+    getAllSubCategories,
+    getAllSubSubCategories,
+    addCategory,
+    setCategory,
+    getAllCategories,
+    updateCategoryName,
+    deleteCategory,
+    editCategory })(Category);

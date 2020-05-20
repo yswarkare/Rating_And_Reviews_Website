@@ -9,8 +9,8 @@ import { Set_Sub_Sub_Category_Name,
     Edit_Sub_Sub_Category } from "./actionTypes";
 
 
-export const getAllSubSubCategories = (admin) => async (dispatch) => {
-    let res = await Axios.get(`/sub-sub-categories`, admin)
+export const getAllSubSubCategories = () => async (dispatch) => {
+    let res = await Axios.get(`/sub-sub-categories`)
     dispatch({
         type: Get_All_Sub_Sub_Categories,
         payload: res

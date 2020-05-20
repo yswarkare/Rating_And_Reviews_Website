@@ -8,7 +8,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { FormControl, InputLabel, Select, TextField, Button } from "@material-ui/core";
 import { Container, Row, Col } from 'reactstrap';
-import { setCategoryInSubSubCategory,
+import { getAllCategories } from "../../Redux/Actions/categoriesActions";
+import { getAllSubCategories } from "../../Redux/Actions/subCategoriesActions";
+import { 
+    getAllSubSubCategories,
+    setCategoryInSubSubCategory,
     setSubCategoryInSubSubCategory,
     addSubSubCategory,
     editSubSubCategory,
@@ -18,6 +22,12 @@ import { setCategoryInSubSubCategory,
 
 
 class Category extends Component {
+
+    componentDidMount = () => {
+        this.props.getAllCategories();
+        this.props.getAllSubCategories();
+        this.props.getAllSubSubCategories()
+    }
 
     onChangeSetSubSubCategory =(subSubCategoryName) => {
         this.props.setSubSubCategory(subSubCategoryName)
@@ -145,6 +155,9 @@ Category.propTypes = {
     subCategories: PropTypes.object.isRequired,
     subSubCategories: PropTypes.object.isRequired,
     subSubCategory: PropTypes.object.isRequired,
+    getAllCategories: PropTypes.func.isRequired,
+    getAllSubCategories: PropTypes.func.isRequired,
+    getAllSubSubCategories: PropTypes.func.isRequired,
     setSubSubCategory: PropTypes.func.isRequired,
     setCategoryInSubSubCategory: PropTypes.func.isRequired,
     setSubCategoryInSubSubCategory: PropTypes.func.isRequired,
@@ -164,6 +177,9 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { 
+    getAllCategories,
+    getAllSubCategories,
+    getAllSubSubCategories,
     setCategoryInSubSubCategory,
     setSubCategoryInSubSubCategory,
     addSubSubCategory,
