@@ -14,12 +14,14 @@ class Product extends Component {
         return (
             <Link to={`/product-page/${this.props.product._id}`}>
             <Card className="product-container">
-                <CardImg top width="100%" src={this.props.product.images[0]} alt={this.props.product.productName} />
+
+               <CardImg top width="100%" src={this.props.product.image} alt="loading image.." />
                 <CardBody>
-                <CardTitle>{this.props.product.productName}</CardTitle>
-                <CardSubtitle>{this.props.product.brandName}</CardSubtitle>
+                {/* <CardTitle>{this.props.product.brandName}</CardTitle> */}
+                <CardSubtitle>{this.props.product.brandName} {this.props.product.productName}</CardSubtitle>
                 <CardText></CardText>
-                <Button>Button</Button>
+                {/* Remove this button not needed */}
+               {/*  <Button>Button</Button> */}
                 </CardBody>
             </Card>
             </Link>

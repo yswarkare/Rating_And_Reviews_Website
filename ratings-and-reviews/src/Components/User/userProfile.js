@@ -162,7 +162,7 @@ class UserProfile extends Component {
             <Container className="user-profile mt-2">
             {this.props.loginStatus.userIsAdmin === false && this.props.loginStatus.loggedIn === true && <UserNavbar></UserNavbar>}
                 <Row className="user-profile-heading m-3 w-75">
-                    <Col><span>Welcome {this.props.user.username}! This is your profile page</span></Col>
+                    <Col><span>Welcome {this.props.user.username}! </span></Col>
                 </Row>
                 <div className="user-profile-info mt-3">
                     <Row className="align-items-center">

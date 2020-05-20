@@ -69,14 +69,14 @@ class Category extends Component {
                                     <Col>{category.categoryName}</Col>
                                     <Col>
                                         <Tooltip title="Edit">
-                                            <IconButton onClick={()=>{this.onClickEditCategoryName(index)}}>
+                                            <IconButton color="primary" onClick={()=>{this.onClickEditCategoryName(index)}}>
                                                 <EditIcon></EditIcon>
                                             </IconButton>
                                         </Tooltip>
                                     </Col>
                                     <Col>
                                         <Tooltip title="Delete">
-                                            <IconButton onClick={()=>{this.onClickDeleteCategory()}}>
+                                            <IconButton color="secondary" onClick={()=>{this.onClickDeleteCategory()}}>
                                                 <DeleteIcon></DeleteIcon>
                                             </IconButton>
                                         </Tooltip>

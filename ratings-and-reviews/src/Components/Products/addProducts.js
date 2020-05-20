@@ -102,7 +102,7 @@ class AddProducts extends Component {
 
     render(){
         return(
-            <div className="add-products-container mt-5">
+            <div className="add-products-container mt-2">
                 <div className="add-product">
                     <div className="add-product-row-1">
                         <div className="add-product-row-1-col-1">
@@ -199,20 +199,20 @@ class AddProducts extends Component {
                         <div className="add-product-row-4-col-1">
                             {
                                 this.props.products.editProduct === false &&
-                                <Button onClick={()=>{this.onClickAddProduct()}} variant="contained" divor="primary">
+                                <Button onClick={()=>{this.onClickAddProduct()}} color="secondary" variant="outlined" divor="primary">
                                     Add Product
                                 </Button>
                             }
                             {
                                 this.props.products.editProduct === true &&
-                                <Button onClick={()=>{this.onClickAddProduct()}} variant="contained" divor="primary">
+                                <Button onClick={()=>{this.onClickAddProduct()}} color="secondary" variant="outlined" divor="primary">
                                     Save Product
                                 </Button>
                             }
                         </div>
                     </div>
                 </div>
-                <Container className="mt-3">
+                <Container className="mt-3 display-in-tables">
                     <Table>
                         <thead>
                             <tr>
@@ -234,7 +234,7 @@ class AddProducts extends Component {
                                 return (
                                     <tr key={index}>
                                         <th>{index}</th>
-                                        <td><img href={`${product.image}`} className="product-image-in-list" alt="Product Image"/></td>
+                                        <td><img src={`${product.image}`} className="product-image-in-list" alt="Product Image"/></td>
                                         <td>{product.productName}</td>
                                         <td>{product.brandName}</td>
                                         <td>{product.productDescription}</td>
@@ -243,14 +243,14 @@ class AddProducts extends Component {
                                         <td>{product.subSubCategory.subSubCategoryName}</td>
                                         <td>
                                         <Tooltip title="Edit">
-                                            <IconButton onClick={()=>{this.onClickEditProduct(index)}}>
+                                            <IconButton color="primary" onClick={()=>{this.onClickEditProduct(index)}}>
                                                 <EditIcon></EditIcon>
                                             </IconButton>
                                         </Tooltip>
                                         </td>
                                         <td>
                                         <Tooltip title="Delete">
-                                            <IconButton onClick={()=>{this.onClickDeleteProduct(index, product)}}>
+                                            <IconButton color="secondary" onClick={()=>{this.onClickDeleteProduct(index, product)}}>
                                                 <DeleteIcon></DeleteIcon>
                                             </IconButton>
                                         </Tooltip>
