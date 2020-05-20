@@ -8,7 +8,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { Container, Row, Col } from 'reactstrap';
 import { getAllSubCategories } from "../../Redux/Actions/subCategoriesActions";
 import { getAllSubSubCategories } from "../../Redux/Actions/subSubCategoriesActions";
-import { getAllSubCategories, addCategory, setCategory, getAllCategories, updateCategoryName, deleteCategory, editCategory } from "../../Redux/Actions/categoriesActions";
+import { getAllCategories, addCategory, setCategory, getAllCategories, updateCategoryName, deleteCategory, editCategory } from "../../Redux/Actions/categoriesActions";
 
 
 class Category extends Component {
