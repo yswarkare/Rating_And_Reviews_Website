@@ -62,11 +62,11 @@ class GiveRating extends Component {
       _id: this.props.product._id
     }
     this.props.getProduct(product)
-    let rating = {
+    let rating3 = {
       product: this.props.product._id,
       user: this.props.user._id
     }
-    this.props.getUserRating(rating)
+    this.props.getUserRating(rating3)
   }
 
   onChangeSetHover = (e, hover) => {
