@@ -39,10 +39,11 @@ export const updateCategoryName = (category) => async (dispatch) => {
     })
 }
 
-export const deleteCategory = (category) => async (dispatch) => {
+export const deleteCategory = (category, index) => async (dispatch) => {
     let res = await api.patch("/categories/delete-category", category);
     dispatch({
         type: Delete_Category,
-        payload: res
+        payload: res,
+        dIndex: index
     })
 }
