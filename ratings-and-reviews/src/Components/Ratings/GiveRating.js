@@ -36,7 +36,7 @@ class GiveRating extends Component {
     this.props.getUserRating(rating)
   }
 
-  onChangeSetUserRatingValue = (value) => {
+  onChangeSetUserRatingValue = async (value) => {
     // console.log("value => "+value)
     let rating = {
       rating: value,
@@ -49,11 +49,11 @@ class GiveRating extends Component {
       product: this.props.product._id,
       user: this.props.user._id
     }
-    this.props.setUserRating(rating)
+    await this.props.setUserRating(rating)
     if (this.props.ratings.userRatingExists === true) {
-      this.props.updateUserRating(rating2)
+      await this.props.updateUserRating(rating2)
     } else {
-      this.props.postUserRating(rating);
+      await this.props.postUserRating(rating);
     }
     this.setState({
       ratingValue: value
@@ -61,12 +61,12 @@ class GiveRating extends Component {
     let product = {
       _id: this.props.product._id
     }
-    this.props.getProduct(product)
+    await this.props.getProduct(product)
     let rating3 = {
       product: this.props.product._id,
       user: this.props.user._id
     }
-    this.props.getUserRating(rating3)
+    await this.props.getUserRating(rating3)
   }
 
   onChangeSetHover = (e, hover) => {
