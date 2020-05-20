@@ -31,9 +31,8 @@ class Category extends Component {
         this.props.updateCategoryName(category);
     }
 
-    onClickDeleteCategory = () => {
-        let category = this.props.categories.category
-        this.props.deleteCategory(category);
+    onClickDeleteCategory = (category, index) => {
+        this.props.deleteCategory(category, index);
     }
 
     render() {
@@ -76,7 +75,7 @@ class Category extends Component {
                                     </Col>
                                     <Col>
                                         <Tooltip title="Delete">
-                                            <IconButton color="secondary" onClick={()=>{this.onClickDeleteCategory()}}>
+                                            <IconButton color="secondary" onClick={()=>{this.onClickDeleteCategory(category, index)}}>
                                                 <DeleteIcon></DeleteIcon>
                                             </IconButton>
                                         </Tooltip>
