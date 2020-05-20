@@ -27,26 +27,6 @@ router.post("/", userAuth, async (req, res) => {
     }
 })
 
-router.put("/:id", userAuth, async (req, res) => {
-    if (validateAdmin(req.user) === true){
-        await Categories.findOneAndUpdate({_id: req.params.id}, {
-            categoryName : req.body.category.categoryName
-        }).then(category => res.json(category)).catch(err => console.log(err))
-    } else {
-        return res.json({message: "User is Unauthorized", success: false})
-    }
-})
-
-router.delete("/:id", userAuth, async (req, res) => {
-    if (validateAdmin(req.user) === true){
-        await Categories.findOneAndRemove({_id: req.params.id})
-        .then(category => res.json(category))
-        .catch(err => console.log(err));
-    } else {
-        return res.json({message: "User is Unauthorized", success: false})
-    }
-})
-
 router.patch("/update-category-name", userAuth, async (req, res) => {
         console.log(req.body);
     try {
