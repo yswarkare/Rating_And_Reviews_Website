@@ -32,6 +32,8 @@ let subCategoriesReducer = ( state = subCategoriesState, action ) => {
 
         case Add_Sub_Category_Name:
             stateCopy.subCategories.push(action.payload.data.subCategory2);
+            stateCopy.subCategory._id = "";
+            stateCopy.subCategory.subCategoryName = "";
             console.log(stateCopy);
             return stateCopy
 
