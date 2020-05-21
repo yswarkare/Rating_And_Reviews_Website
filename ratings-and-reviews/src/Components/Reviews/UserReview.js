@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import { TextareaAutosize, Tooltip, IconButton, Chip } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { getProductReviews } from "../../Redux/Actions/reviewsActions";
 import { getUserReview,
     editUserReview,
@@ -72,9 +75,23 @@ class UserReview extends Component {
                             this.props.reviews.reviewExists === true && this.props.reviews.editReview === false &&
                             <div className="show-user-review">
                                 <div className="user-review-buttons">
-                                    <div>{this.props.review.user.username}</div>
-                                    <div><Button onClick={()=>{this.onClickEditUserReview()}} variant="contained" color="primary">Edit</Button></div>
-                                    <div><Button onClick={()=>{this.onClickDeleteUserReview()}} variant="contained" color="primary">Delete</Button></div>
+                                    <div>
+                                    <Chip color="primary" size="small" icon={<AccountCircleIcon />} label={this.props.review.user.username} />
+                                    </div>
+                                    <div>
+                                        <Tooltip title="Edit Review">
+                                            <IconButton onClick={()=>{this.onClickEditUserReview()}}>
+                                                <EditIcon></EditIcon>
+                                            </IconButton>
+                                        </Tooltip>
+                                    </div>
+                                    <div>
+                                        <Tooltip title="Delete Review">
+                                            <IconButton onClick={()=>{this.onClickDeleteUserReview()}}>
+                                                <DeleteIcon></DeleteIcon>
+                                            </IconButton>
+                                        </Tooltip>
+                                    </div>
                                     <div>{this.props.review.updatedAt}</div>
                                 </div>
                                 <div><p>{this.props.review.review}</p></div>
