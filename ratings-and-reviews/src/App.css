@@ -401,14 +401,13 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 0.5rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
+  padding: 0.25rem;
   justify-self: center;
   align-items: baseline;
   border-style: solid;
   border-color: black;
   border-left: hidden;
-  border-top: hidden;
+  border-bottom: hidden;
   border-right: hidden;
   border-width: 2px;
 }
