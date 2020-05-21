@@ -32,7 +32,13 @@ let reviewsReducer = ( state = reviewsState, action ) => {
             let date = new Date(action.payload.data.reviews[0].updatedAt);
             console.log( "date => " + date)
             console.log("To Locale String => " + date.toLocaleString())
-            state.productReviews = action.payload.data.reviews
+            let pRArray = action.payload.data.reviews
+            for ( let i = 0; i < pRArray.length; i++){
+                pRArray[i].date = new Date(action.payload.data.reviews[i].date);
+                pRArray[i].createdAt = new Date(action.payload.data.reviews[i].createdAt);
+                pRArray[i].updatedAt = new Date(action.payload.data.reviews[i].updatedAt);
+            }
+            state.productReviews = pRArray;
             if(state.productReviews[0] === undefined){
                 let pReviews= {
                     review: "",
