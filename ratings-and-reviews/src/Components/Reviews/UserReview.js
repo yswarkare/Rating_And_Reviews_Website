@@ -74,7 +74,7 @@ class UserReview extends Component {
                         { 
                             this.props.reviews.reviewExists === true && this.props.reviews.editReview === false &&
                             <div className="show-user-review">
-                                <div><p>{this.props.review.review}</p></div>
+                                <div className="user-review-body"><p>{this.props.review.review}</p></div>
                                 <div className="user-review-buttons">
                                     <div>
                                     <Chip color="primary" size="small" icon={<AccountCircleIcon />} label={this.props.review.user.username} />
