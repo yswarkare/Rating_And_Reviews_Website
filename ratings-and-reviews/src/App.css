@@ -263,9 +263,13 @@ a {
   margin: 0rem;
 }
 
-/**/
+/* profile page heading bold*/
 .user-profile-heading{
   font-weight: bold;
+}
+/*Homepage text color on card*/
+.card-subtitle{
+  text-decoration-color: black ;
 }
 
 .header-navbar {
