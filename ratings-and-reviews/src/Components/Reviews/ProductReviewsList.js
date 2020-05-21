@@ -41,12 +41,12 @@ class ProductReviewsList extends Component {
                                     <Chip size="small" icon={<AccountCircleIcon />} label={review.user.username} />
                                     </div>
                                     <div className="product-review-likes">
-                                        <span>{review.createdAt}</span>
+                                        <span></span>
                                     </div>
                                     <div className="product-review-dislikes">
-                                        <span>{review.updatedAt}</span>
+                                        <span></span>
                                     </div>
-                                    <div className="product-review-date"><span>{review.date}</span></div>
+                                    <div className="product-review-date"><span>{review.updatedAt}</span></div>
                                 </div>
                                 <div className="product-review-body">
                                     <p>{review.review}</p>
