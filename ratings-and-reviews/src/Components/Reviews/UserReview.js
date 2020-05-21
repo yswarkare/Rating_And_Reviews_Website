@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import { getProductReviews } from "../../Redux/Actions/reviewsActions";
 import { getUserReview,
     editUserReview,
     setUserReview,
@@ -34,19 +35,31 @@ class UserReview extends Component {
         this.props.setUserReview(review);
     }
 
-    onClickUpdateUserReview = () => {
+    onClickUpdateUserReview = async () => {
         let review = this.props.review
-        this.props.updateUserReview(review);
+        await this.props.updateUserReview(review);
+        let product = {
+            product: this.props.product._id
+        }
+        await this.props.getProductReviews(product)
     }
 
-    onClickPostUserReview = () => {
+    onClickPostUserReview = async () => {
         let review = this.props.review
-        this.props.postUserReview(review);
+        await this.props.postUserReview(review);
+        let product = {
+            product: this.props.product._id
+        }
+        await this.props.getProductReviews(product)
     }
 
-    onClickDeleteUserReview = () => {
+    onClickDeleteUserReview = async () => {
         let review = this.props.review
-        this.props.deleteUserReview(review);
+        await this.props.deleteUserReview(review);
+        let product = {
+            product: this.props.product._id
+        }
+        await this.props.getProductReviews(product)
     }
 
     render() {
@@ -102,6 +115,7 @@ UserReview.propTypes = {
     review: PropTypes.object.isRequired,
     product: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired,
+    getProductReviews: PropTypes.func.isRequired,
     getUserReview: PropTypes.func.isRequired,
     editUserReview: PropTypes.func.isRequired,
     setUserReview: PropTypes.func.isRequired,
@@ -119,7 +133,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getUserReview,
+export default connect(mapStateToProps, { 
+    getProductReviews,
+    getUserReview,
     editUserReview,
     setUserReview,
     postUserReview,
