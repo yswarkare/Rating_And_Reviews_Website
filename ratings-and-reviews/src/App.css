@@ -393,6 +393,8 @@ a {
 
 .user-review-body {
   padding-top: 0.5rem;
+  padding-left: 5rem;
+  text-align: left;
 }
 
 .user-review-buttons {
