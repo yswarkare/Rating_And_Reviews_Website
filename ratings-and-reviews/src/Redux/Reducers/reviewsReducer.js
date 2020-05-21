@@ -19,9 +19,12 @@ let reviewsReducer = ( state = reviewsState, action ) => {
                     state.reviewExists = false;
                 } else {
                     state.review = action.payload.data.review[0];
-                    state.review.date = new Date(action.payload.data.review[0].date);
-                    state.review.createdAt = new Date(action.payload.data.review[0].createdAt);
-                    state.review.updatedAt = new Date(action.payload.data.review[0].updatedAt);
+                    let date = new Date(action.payload.data.review[0].date);
+                    let createdAt = new Date(action.payload.data.review[0].createdAt);
+                    let updatedAt = new Date(action.payload.data.review[0].updatedAt);
+                    state.review.date = date.toLocaleString()
+                    state.review.createdAt = createdAt.toLocaleString()
+                    state.review.updatedAt = updatedAt.toLocaleString()
                     state.reviewExists = true;
                 }
             } else {
@@ -37,9 +40,12 @@ let reviewsReducer = ( state = reviewsState, action ) => {
             console.log("To Locale String => " + date.toLocaleString())
             let pRArray = action.payload.data.reviews
             for ( let i = 0; i < pRArray.length; i++){
-                pRArray[i].date = new Date(action.payload.data.reviews[i].date);
-                pRArray[i].createdAt = new Date(action.payload.data.reviews[i].createdAt);
-                pRArray[i].updatedAt = new Date(action.payload.data.reviews[i].updatedAt);
+                let date1 = new Date(action.payload.data.reviews[i].date);
+                let createdAt1 = new Date(action.payload.data.reviews[i].createdAt);
+                let updatedAt1 = new Date(action.payload.data.reviews[i].updatedAt);
+                pRArray[i].date = date1.toLocaleString()
+                pRArray[i].createdAt = createdAt1.toLocaleString()
+                pRArray[i].updatedAt = updatedAt1.toLocaleString()
             }
             state.productReviews = pRArray;
             if(state.productReviews[0] === undefined){
