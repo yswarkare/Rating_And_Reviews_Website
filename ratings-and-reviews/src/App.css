@@ -182,6 +182,7 @@ a {
 #sub-sub-categories-table, #sub-sub-categories-table-body {
   display: grid;
   grid-template-columns: 1fr 3fr 3fr 3fr 1fr 1fr;
+  background-color: #f2f2f2;
 }
 
 .add-categories {
@@ -260,6 +261,11 @@ a {
   grid-gap: 0.25rem;
   padding: 0rem;
   margin: 0rem;
+}
+
+/**/
+.user-profile-heading{
+  font-weight: bold;
 }
 
 .header-navbar {
