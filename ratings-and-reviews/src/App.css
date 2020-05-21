@@ -396,7 +396,7 @@ a {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 0.5rem;
   padding: 0.25rem;
-  justify-self: center;
+  justify-self: stretch;
   align-items: baseline;
   border-style: solid;
   border-color: black;
