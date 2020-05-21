@@ -19,6 +19,9 @@ let reviewsReducer = ( state = reviewsState, action ) => {
                     state.reviewExists = false;
                 } else {
                     state.review = action.payload.data.review[0];
+                    state.review.date = new Date(action.payload.data.review[0].date);
+                    state.review.createdAt = new Date(action.payload.data.review[0].createdAt);
+                    state.review.updatedAt = new Date(action.payload.data.review[0].updatedAt);
                     state.reviewExists = true;
                 }
             } else {

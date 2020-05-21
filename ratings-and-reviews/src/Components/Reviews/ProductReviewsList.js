@@ -37,10 +37,10 @@ class ProductReviewsList extends Component {
                                 <div className="product-review-header">
                                     <div className="product-review-username"><span>{review.user.username}</span></div>
                                     <div className="product-review-likes">
-                                                    
+                                        <span>{review.createdAt.toLocaleString()}</span>
                                     </div>
                                     <div className="product-review-dislikes">
-                                        
+                                        <span>{review.updatedAt.toLocaleString()}</span>
                                     </div>
                                     <div className="product-review-date"><span>{review.date}</span></div>
                                 </div>
