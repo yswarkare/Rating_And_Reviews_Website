@@ -392,14 +392,13 @@ a {
 }
 
 .user-review-body {
-  padding-top: 05rem;
+  padding-top: 0.5rem;
 }
 
 .user-review-buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 0.5rem;
-  padding: 0.25rem;
+  grid-gap: 0.25rem;
   justify-self: stretch;
   align-items: baseline;
   border-style: solid;
