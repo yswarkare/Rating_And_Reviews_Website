@@ -29,7 +29,7 @@ let reviewsReducer = ( state = reviewsState, action ) => {
 
         case Get_Product_Reviews:
             console.log(action.payload);
-            let date = action.payload.data.reviews[0].updatedAt;
+            let date = new Date(action.payload.data.reviews[0].updatedAt);
             console.log( "date => " + date)
             console.log("To Locale String => " + date.toLocaleString())
             state.productReviews = action.payload.data.reviews
