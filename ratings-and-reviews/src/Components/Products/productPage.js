@@ -18,7 +18,7 @@ class ProductPage extends Component {
             <div className="product-page-container">
                 <div className="product-container">
                     <div className="product-image-container">
-                        <img href={this.props.product.image} alt={this.props.product.productName}></img>
+                        <img src={this.props.product.image} alt={this.props.product.productName}></img>
                     </div>
                     <div className="product-info">
                         <div className="product-name"><span>{this.props.product.productName}</span></div>
