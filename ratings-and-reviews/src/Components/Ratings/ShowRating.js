@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { getProduct } from "../../Redux/Actions/productActions";
 
 
 
@@ -23,6 +26,13 @@ class ShowRating extends Component {
       4.5: 'Excellent',
       5: 'Excellent+',
     }
+  }
+
+  componentDidMount = () => {
+      let product = {
+      _id: this.props.product._id
+    }
+    this.props.getProduct(product);
   }
 
   onChangeSetRatingValue = (value) => {
@@ -113,7 +123,13 @@ class ShowRating extends Component {
 
 
 ShowRating.propTypes = {
-  
+  getProduct: PropTypes.func.isRequired,
 };
 
-export default ShowRating;
+const mapStateToProps = (state) => {
+  return {
+    product: state.products.product
+  }
+}
+
+export default connect(mapStateToProps, { getProduct })(ShowRating);
