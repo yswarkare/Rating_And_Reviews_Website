@@ -398,6 +398,13 @@ a {
   padding: 0.5rem;
   margin: 0.5rem;
   justify-self: center;
+  align-items: baseline;
+  border-style: solid;
+  border-color: black;
+  border-left: hidden;
+  border-top: hidden;
+  border-right: hidden;
+  border-width: 2px;
 }
 
 .product-review-body {
