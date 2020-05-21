@@ -77,6 +77,12 @@ let reviewsReducer = ( state = reviewsState, action ) => {
         case Post_User_Review:
             console.log(action.payload);
             state.review = action.payload.data.review;
+            let date2 = new Date(action.payload.data.review.date);
+            let createdAt2 = new Date(action.payload.data.review.createdAt);
+            let updatedAt2 = new Date(action.payload.data.review.updatedAt);
+            state.review.date = date2.toLocaleString()
+            state.review.createdAt = createdAt2.toLocaleString()
+            state.review.updatedAt = updatedAt2.toLocaleString()
             state.editReview = false;
             state.reviewExists = true;
             console.log(state);
@@ -85,6 +91,12 @@ let reviewsReducer = ( state = reviewsState, action ) => {
         case Update_User_Review:
             console.log(action.payload);
             state.review = action.payload.data.review;
+            let date3 = new Date(action.payload.data.review.date);
+            let createdAt3 = new Date(action.payload.data.review.createdAt);
+            let updatedAt3 = new Date(action.payload.data.review.updatedAt);
+            state.review.date = date3.toLocaleString()
+            state.review.createdAt = createdAt3.toLocaleString()
+            state.review.updatedAt = updatedAt3.toLocaleString()
             state.editReview = false;
             console.log("Username => "+state.review.user.username);
             console.log(state);

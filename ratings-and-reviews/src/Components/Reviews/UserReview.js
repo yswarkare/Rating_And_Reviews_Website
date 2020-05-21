@@ -75,7 +75,7 @@ class UserReview extends Component {
                                     <div>{this.props.review.user.username}</div>
                                     <div><Button onClick={()=>{this.onClickEditUserReview()}} variant="contained" color="primary">Edit</Button></div>
                                     <div><Button onClick={()=>{this.onClickDeleteUserReview()}} variant="contained" color="primary">Delete</Button></div>
-                                    <div>{this.props.review.createdAt}</div>
+                                    <div>{this.props.review.updatedAt}</div>
                                 </div>
                                 <div><p>{this.props.review.review}</p></div>
                             </div>
