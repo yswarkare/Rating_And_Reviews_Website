@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { getProductReviews } from "../../Redux/Actions/reviewsActions";
+import { Chip } from "@material-ui/core";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 // import ToggleButton from '@material-ui/lab/ToggleButton';
 // import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 // import Tooltip from '@material-ui/core/Tooltip';
@@ -35,7 +37,9 @@ class ProductReviewsList extends Component {
                         return (
                             <div className="product-review" key={index}>
                                 <div className="product-review-header">
-                                    <div className="product-review-username"><span>{review.user.username}</span></div>
+                                    <div className="product-review-username">
+                                    <Chip size="small" icon={<AccountCircleIcon />} label={review.user.username} />
+                                    </div>
                                     <div className="product-review-likes">
                                         <span>{review.createdAt}</span>
                                     </div>
