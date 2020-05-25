@@ -276,8 +276,8 @@ a {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-gap: 0.5rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
   justify-content: stretch;
   align-items: center;
 }
