@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { getProduct } from "../../Redux/Actions/productActions";
 import { getUserRating, setUserRating, postUserRating, updateUserRating } from "../../Redux/Actions/ratingsActions"
 
 
@@ -35,7 +36,7 @@ class GiveRating extends Component {
     this.props.getUserRating(rating)
   }
 
-  onChangeSetUserRatingValue = (value) => {
+  onChangeSetUserRatingValue = async (value) => {
     // console.log("value => "+value)
     let rating = {
       rating: value,
@@ -48,15 +49,24 @@ class GiveRating extends Component {
       product: this.props.product._id,
       user: this.props.user._id
     }
-    this.props.setUserRating(rating)
+    await this.props.setUserRating(rating)
     if (this.props.ratings.userRatingExists === true) {
-      this.props.updateUserRating(rating2)
+      await this.props.updateUserRating(rating2)
     } else {
-      this.props.postUserRating(rating);
+      await this.props.postUserRating(rating);
     }
     this.setState({
       ratingValue: value
     })
+    let product = {
+      _id: this.props.product._id
+    }
+    await this.props.getProduct(product)
+    let rating3 = {
+      product: this.props.product._id,
+      user: this.props.user._id
+    }
+    await this.props.getUserRating(rating3)
   }
 
   onChangeSetHover = (e, hover) => {
@@ -86,6 +96,7 @@ class GiveRating extends Component {
 
 
 GiveRating.propTypes = {
+  getProduct: PropTypes.func.isRequired,
   getUserRating: PropTypes.func.isRequired,
   setUserRating: PropTypes.func.isRequired,
   postUserRating: PropTypes.func.isRequired,
@@ -105,4 +116,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { getUserRating, setUserRating, postUserRating, updateUserRating })(GiveRating);
+export default connect(mapStateToProps, { getProduct, getUserRating, setUserRating, postUserRating, updateUserRating })(GiveRating);

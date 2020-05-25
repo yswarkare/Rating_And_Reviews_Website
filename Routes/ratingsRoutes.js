@@ -53,7 +53,7 @@ router.post("/post-user-rating", userAuth, async (req, res) => {
             console.log(error);
         }
         try {
-            let user1 = await Users.findOne({_id: req.body.user})
+            let user1 = await Users.findOne({_id: req.user_id})
             let rArr2 = user1.ratings
             rArr2.push(req.rating._id)
             await Users.findOneAndUpdate({_id: req.body.user}, {ratings: rArr2})

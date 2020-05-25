@@ -401,13 +401,25 @@ a {
   -o-border-radius: 0.5rem;
 }
 
+.user-review-body {
+  padding-top: 0.5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  text-align: left;
+}
+
 .user-review-buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 0.5rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
-  justify-self: center;
+  grid-gap: 0.125rem;
+  justify-self: stretch;
+  align-items: baseline;
+  border-style: solid;
+  border-color: black;
+  border-left: hidden;
+  border-bottom: hidden;
+  border-right: hidden;
+  border-width: 2px;
 }
 
 .product-review-body {
@@ -432,6 +444,8 @@ a {
 .product-review-header {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.125rem;
+  padding: 0.125rem;
   border-style: solid;
   border-color: black;
   border-left: hidden;

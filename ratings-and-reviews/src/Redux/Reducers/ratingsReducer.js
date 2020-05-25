@@ -5,6 +5,7 @@ let ratingsReducer = ( state = ratingsState, action ) => {
     let stateCopy = JSON.parse(JSON.stringify(state));
 
     switch (action.type) {
+
         case Get_User_Rating:
             console.log(action.payload);
             if (action.payload.data.rating ) {
@@ -13,6 +14,9 @@ let ratingsReducer = ( state = ratingsState, action ) => {
                     stateCopy.rating = rating[0];
                     stateCopy.rating.rating = rating[0].rating.$numberDecimal
                     stateCopy.userRatingExists = true
+                } else {
+                    stateCopy.rating.rating = 0
+                    stateCopy.userRatingExists = false
                 }
             } else {
                 stateCopy.ratingErrors.rating.message = action.payload.data.message

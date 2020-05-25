@@ -19,6 +19,12 @@ let reviewsReducer = ( state = reviewsState, action ) => {
                     state.reviewExists = false;
                 } else {
                     state.review = action.payload.data.review[0];
+                    let date = new Date(action.payload.data.review[0].date);
+                    let createdAt = new Date(action.payload.data.review[0].createdAt);
+                    let updatedAt = new Date(action.payload.data.review[0].updatedAt);
+                    state.review.date = date.toLocaleString()
+                    state.review.createdAt = createdAt.toLocaleString()
+                    state.review.updatedAt = updatedAt.toLocaleString()
                     state.reviewExists = true;
                 }
             } else {
@@ -29,7 +35,19 @@ let reviewsReducer = ( state = reviewsState, action ) => {
 
         case Get_Product_Reviews:
             console.log(action.payload);
-            state.productReviews = action.payload.data.reviews
+            let date = new Date(action.payload.data.reviews[0].updatedAt);
+            console.log( "date => " + date)
+            console.log("To Locale String => " + date.toLocaleString())
+            let pRArray = action.payload.data.reviews
+            for ( let i = 0; i < pRArray.length; i++){
+                let date1 = new Date(action.payload.data.reviews[i].date);
+                let createdAt1 = new Date(action.payload.data.reviews[i].createdAt);
+                let updatedAt1 = new Date(action.payload.data.reviews[i].updatedAt);
+                pRArray[i].date = date1.toLocaleString()
+                pRArray[i].createdAt = createdAt1.toLocaleString()
+                pRArray[i].updatedAt = updatedAt1.toLocaleString()
+            }
+            state.productReviews = pRArray;
             if(state.productReviews[0] === undefined){
                 let pReviews= {
                     review: "",
@@ -59,6 +77,12 @@ let reviewsReducer = ( state = reviewsState, action ) => {
         case Post_User_Review:
             console.log(action.payload);
             state.review = action.payload.data.review;
+            let date2 = new Date(action.payload.data.review.date);
+            let createdAt2 = new Date(action.payload.data.review.createdAt);
+            let updatedAt2 = new Date(action.payload.data.review.updatedAt);
+            state.review.date = date2.toLocaleString()
+            state.review.createdAt = createdAt2.toLocaleString()
+            state.review.updatedAt = updatedAt2.toLocaleString()
             state.editReview = false;
             state.reviewExists = true;
             console.log(state);
@@ -67,6 +91,12 @@ let reviewsReducer = ( state = reviewsState, action ) => {
         case Update_User_Review:
             console.log(action.payload);
             state.review = action.payload.data.review;
+            let date3 = new Date(action.payload.data.review.date);
+            let createdAt3 = new Date(action.payload.data.review.createdAt);
+            let updatedAt3 = new Date(action.payload.data.review.updatedAt);
+            state.review.date = date3.toLocaleString()
+            state.review.createdAt = createdAt3.toLocaleString()
+            state.review.updatedAt = updatedAt3.toLocaleString()
             state.editReview = false;
             console.log("Username => "+state.review.user.username);
             console.log(state);
