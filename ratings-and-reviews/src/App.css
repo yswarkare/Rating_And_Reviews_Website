@@ -43,11 +43,31 @@ div.input-group{
   height: 14vmin;
   object-fit: scale-down;
 }
+
+.popout {
+  animation: popout 1s ease;
+  -webkit-animation: popout 1s ease;
+}
+@keyframes popout {
+  from{transform:scale(0)}
+  80%{transform:scale(1.2)}
+  to{transform:scale(1)}
+}
+@-webkit-keyframes popout {
+  from{-webkit-transform:scale(0)}
+  80%{-webkit-transform:scale(1.2)}
+  to{-webkit-transform:scale(1)}
+}
+
 .card-body{
   flex: 1 1 auto;
   min-height: 1px;
   padding: 0.1rem;
   color: black;
+}
+.card-body:hover{
+  color:green;
+  text-decoration: none;
 }
 
 .App {
