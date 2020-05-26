@@ -15,7 +15,7 @@ class Product extends Component {
             <Link to={`/product-page/${this.props.product._id}`}>
             <Card className="product-container popout">
 
-               <CardImg top width="100%" src={this.props.product.image} alt="loading image.." />
+               <CardImg className="popout popoutonhover" top width="100%" src={this.props.product.image} alt="loading image.." />
                 <CardBody>
                 {/* <CardTitle>{this.props.product.brandName}</CardTitle> */}
                 <CardSubtitle>{this.props.product.brandName} {this.props.product.productName}</CardSubtitle>
