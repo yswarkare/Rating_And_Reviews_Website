@@ -43,7 +43,7 @@ div.input-group{
   height: 14vmin;
   object-fit: scale-down;
 }
-
+/*Popout whole page on load*/
 .popout {
   animation: popout 1s ease;
   -webkit-animation: popout 1s ease;
@@ -57,6 +57,18 @@ div.input-group{
   from{-webkit-transform:scale(0)}
   80%{-webkit-transform:scale(1.2)}
   to{-webkit-transform:scale(1)}
+}
+
+/* Zoom In #1 */
+.popoutonhover img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.popoutonhover:hover img {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
 }
 
 .card-body{
