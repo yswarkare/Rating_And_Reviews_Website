@@ -67,8 +67,8 @@ div.input-group{
 	transition: .3s ease-in-out;
 }
 .popoutonhover:hover img {
-	-webkit-transform: scale(1.3);
-	transform: scale(1.3);
+	-webkit-transform: scale(1.4);
+	transform: scale(1.4);
 }
 
 .card-body{
