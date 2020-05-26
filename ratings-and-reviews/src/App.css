@@ -35,13 +35,13 @@ ul.admin-navbar.nav{
 
 /*Homepage Search box width set*/
 div.input-group{
-  width: 35rem;
+  width: 30vw;
 }
 
 .card-img-top {
   width: 100%;
-  height: 15vw;
-  object-fit: cover;
+  height: 12vmin;
+  object-fit: scale-down;
 }
 
 .App {
