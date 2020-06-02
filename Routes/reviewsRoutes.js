@@ -38,8 +38,8 @@ router.patch("/post-user-review", userAuth, async (req, res) => {
         let uReviews = user1.reviews
         uReviews.push(review1._id)
         await Users.findOneAndUpdate({_id: req.user._id}, {reviews: uReviews});
-        let product1 = await Products.findOne({_id: req.body.product})
-        let pReviews = product1.reviews;
+        let prodcut1 = await Products.findOne({_id: req.body.product})
+        let pReviews = prodcut1.reviews;
         pReviews.push(review1._id)
         await Products.findOneAndUpdate({_id: req.body.product}, {reviews: pReviews});
         return res.json({message: "User Review Posted Successfully", success: true, review: review3})

@@ -128,14 +128,14 @@ class Category extends Component {
                                         <Col>{subSubCategory.category.categoryName}</Col>
                                     <Col>
                                         <Tooltip title="Edit">
-                                            <IconButton onClick={()=>{this.onClickEditSubSubCategoryName(index)}}>
+                                            <IconButton color="primary" onClick={()=>{this.onClickEditSubSubCategoryName(index)}}>
                                                 <EditIcon></EditIcon>
                                             </IconButton>
                                         </Tooltip>
                                     </Col>
                                     <Col>
                                         <Tooltip title="Delete">
-                                            <IconButton onClick={()=>{this.onClickDeleteSubSubCategory(subSubCategory, index)}}>
+                                            <IconButton color="secondary" onClick={()=>{this.onClickDeleteSubSubCategory(subSubCategory, index)}}>
                                                 <DeleteIcon></DeleteIcon>
                                             </IconButton>
                                         </Tooltip>

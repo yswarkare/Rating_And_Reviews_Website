@@ -35,13 +35,51 @@ ul.admin-navbar.nav{
 
 /*Homepage Search box width set*/
 div.input-group{
-  width: 35rem;
+  width: 43vw;
 }
 
 .card-img-top {
   width: 100%;
-  height: 15vw;
-  object-fit: cover;
+  height: 14vmin;
+  object-fit: scale-down;
+}
+/*Popout whole page on load*/
+.popout {
+  animation: popout 1s ease;
+  -webkit-animation: popout 1s ease;
+}
+@keyframes popout {
+  from{transform:scale(0)}
+  80%{transform:scale(1.2)}
+  to{transform:scale(1)}
+}
+@-webkit-keyframes popout {
+  from{-webkit-transform:scale(0)}
+  80%{-webkit-transform:scale(1.2)}
+  to{-webkit-transform:scale(1)}
+}
+
+/* Zoom In #1 */
+.popoutonhover img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.popoutonhover:hover img {
+	-webkit-transform: scale(1.5);
+	transform: scale(1.5);
+}
+
+.card-body{
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 0.1rem;
+  color: black;
+}
+.card-body:hover{
+  color:green;
+  text-decoration: none;
 }
 
 .App {
@@ -182,6 +220,7 @@ a {
 #sub-sub-categories-table, #sub-sub-categories-table-body {
   display: grid;
   grid-template-columns: 1fr 3fr 3fr 3fr 1fr 1fr;
+  background-color: #f2f2f2;
 }
 
 .add-categories {
@@ -262,12 +301,21 @@ a {
   margin: 0rem;
 }
 
+/* profile page heading bold*/
+.user-profile-heading{
+  font-weight: bold;
+}
+/*Homepage text color on card*/
+.card-subtitle{
+  text-decoration-color: black ;
+}
+
 .header-navbar {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-gap: 0.5rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
   justify-content: stretch;
   align-items: center;
 }
@@ -275,14 +323,14 @@ a {
 .admin-navbar {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
   padding: 0.25rem;
 }
 
 .user-navbar {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   padding: 0.25rem;
 }
 
@@ -307,12 +355,12 @@ a {
 
 .products-wrapper {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   grid-gap: 0.5rem;
   padding: 0.5rem;
   margin: 0.5rem;
   justify-content: stretch;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .product-container{

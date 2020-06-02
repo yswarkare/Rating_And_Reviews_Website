@@ -13,7 +13,7 @@ class Product extends Component {
     render () {
         return (
             <Link to={`/product-page/${this.props.product._id}`}>
-            <Card className="product-container">
+            <Card className="product-container popout popoutonhover">
 
                <CardImg top width="100%" src={this.props.product.image} alt="loading image.." />
                 <CardBody>
