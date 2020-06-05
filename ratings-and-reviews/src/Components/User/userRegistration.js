@@ -13,7 +13,7 @@ import { setFirstName,
     setRepeatPassword,
     registerUser } from "../../Redux/Actions/userActions";
 
-class UserRegistraion extends Component {
+class UserRegistration extends Component {
 
     onChangeSetFirstName = (firstName) =>{
         this.props.setFirstName(firstName)
@@ -47,8 +47,6 @@ class UserRegistraion extends Component {
         this.props.registerUser(this.props.user)
     }
 
-
-
     render(){
         console.log(this.props.user)
         return(
@@ -75,7 +73,7 @@ class UserRegistraion extends Component {
     }
 }
 
-UserRegistraion.propTypes = {
+UserRegistration.propTypes = {
     user: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
     loginStatus: PropTypes.object.isRequired,
@@ -104,4 +102,4 @@ export default connect(mapStateToProps, { setFirstName,
     setEmailId,
     setPassword,
     setRepeatPassword,
-    registerUser })(UserRegistraion);
+    registerUser })(UserRegistration);

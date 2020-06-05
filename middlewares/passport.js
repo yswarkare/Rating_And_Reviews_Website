@@ -33,7 +33,6 @@ const strategy = new Strategy(opts, async (jwt_payload, done) => {
             return done(null, false);
         }
     } catch (err) {
-        
         console.log(err);
         return done(err, false);
     }    
