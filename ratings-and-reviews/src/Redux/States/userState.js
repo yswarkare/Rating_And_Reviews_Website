@@ -25,6 +25,7 @@ let userState = {
         userIsAdmin: false,
         loginRedirect: "",
         logoutRedirect: "",
+        userRegistered: null,
         registrationRedirect: ""
     },
     headers: {

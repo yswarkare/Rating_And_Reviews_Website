@@ -35,7 +35,11 @@ let reviewsReducer = ( state = reviewsState, action ) => {
 
         case Get_Product_Reviews:
             console.log(action.payload);
-            let date = new Date(action.payload.data.reviews[0].updatedAt);
+            let date = "";
+            if (action.payload.data.reviews[0]){
+                date = new Date(action.payload.data.reviews[0].updatedAt);
+            }
+
             console.log( "date => " + date)
             console.log("To Locale String => " + date.toLocaleString())
             let pRArray = action.payload.data.reviews
