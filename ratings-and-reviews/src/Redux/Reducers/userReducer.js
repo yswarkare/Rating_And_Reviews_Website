@@ -80,9 +80,11 @@ let userReducer = ( state = userState, action ) => {
             stateCopy.errors.registration.success = action.payload.data.success;
             stateCopy.errors.registration.message = action.payload.data.message;
             if (action.payload.data.success === true){
-                stateCopy.loginStatus.registrationRedirect = "/user-login"
+                stateCopy.loginStatus.registrationRedirect = "/user-login";
+                stateCopy.loginStatus.userRegistered = true;
             } else {
                 stateCopy.errors.registration.error = action.payload.data.error;
+                stateCopy.loginStatus.registrationRedirect = "/";
             }
             console.log(stateCopy);
             return stateCopy

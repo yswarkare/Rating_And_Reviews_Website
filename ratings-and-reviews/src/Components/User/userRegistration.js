@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import RegistrationErrors from "./RegistrationErrors";
 import { setFirstName,
     setMiddleName,
     setLastName,
@@ -14,6 +15,11 @@ import { setFirstName,
     registerUser } from "../../Redux/Actions/userActions";
 
 class UserRegistration extends Component {
+
+    state = {
+        registered: null,
+        redirect: null
+    }
 
     onChangeSetFirstName = (firstName) =>{
         this.props.setFirstName(firstName)
@@ -50,7 +56,7 @@ class UserRegistration extends Component {
     render(){
         console.log(this.props.user)
         return(
-            
+            <div>
             <div className="user-registration-container">
                 <div className="user-registration">
                     <TextField type="text" onChange={(e)=>{this.onChangeSetFirstName(e.target.value)}} label="First Name" variant="outlined" />
@@ -67,6 +73,10 @@ class UserRegistration extends Component {
                             Register
                         </Button>
                     </Link>
+                </div>
+            </div>
+                <div>
+                    <RegistrationErrors></RegistrationErrors>
                 </div>
             </div>
         )

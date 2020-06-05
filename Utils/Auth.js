@@ -19,7 +19,7 @@ const userRegistration = async (userData, res) => {
     // Validate Username
     let usernameTaken = await validateUsername(usernameLowercase);
     if (usernameTaken) {
-        return res.status(400).json({error: "username",message: `Username already exists`, success: false});
+        return res.json({error: "username",message: `Username already exists`, success: false});
     }
 
     // Validate Email ID 
@@ -29,7 +29,7 @@ const userRegistration = async (userData, res) => {
 
     let emailIdRegistered = await validateEmailId(emailIdLowercase);
     if (emailIdRegistered){
-        return res.status(400).json({error: "email", message: `Email ID already Registered`, success: false});
+        return res.json({error: "email", message: `Email ID already Registered`, success: false});
     }
 
     // Create Hashed Password Function
@@ -54,7 +54,7 @@ const userRegistration = async (userData, res) => {
         })
     } catch (err) {
         console.log(err)
-        return res.status(500).json({error: "registration", message: `Unable to Create Account`, success: false })
+        return res.json({error: "registration", message: `Unable to Create Account`, success: false })
     }
 }
 

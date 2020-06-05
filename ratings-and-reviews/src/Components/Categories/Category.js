@@ -125,7 +125,6 @@ export default connect(mapStateToProps, {
     getAllSubSubCategories,
     addCategory,
     setCategory,
-    getAllCategories,
     updateCategoryName,
     deleteCategory,
     editCategory })(Category);
