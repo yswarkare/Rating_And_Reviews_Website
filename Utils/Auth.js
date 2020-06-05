@@ -19,17 +19,17 @@ const userRegistration = async (userData, res) => {
     // Validate Username
     let usernameTaken = await validateUsername(usernameLowercase);
     if (usernameTaken) {
-        return res.status(400).json({message: `Username already exists`, success: false});
+        return res.status(400).json({error: "username",message: `Username already exists`, success: false});
     }
 
     // Validate Email ID 
     if(validator.isEmail(emailIdLowercase) === false){    
-        return res.json({message: `${emailIdLowercase} is not an email ID`, success: false})
+        return res.json({error: "email", message: `${emailIdLowercase} is not an email ID`, success: false})
     }
 
     let emailIdRegistered = await validateEmailId(emailIdLowercase);
     if (emailIdRegistered){
-        return res.status(400).json({message: `Email ID already Registered`, success: false});
+        return res.status(400).json({error: "email", message: `Email ID already Registered`, success: false});
     }
 
     // Create Hashed Password Function
@@ -46,15 +46,16 @@ const userRegistration = async (userData, res) => {
         emailId : emailIdLowercase,
         password : hashedPassword
     });
-    await newUser.save().then(()=> {return res.status(201).json({
+    try {
+        await newUser.save()
+        return res.status(201).json({
             message: `Congratulations! You're Successfully Registered now you could login`,
             success: true
-        })}).catch((err)=>{
-            console.log(err);
-            return res.status(500).json({
-                message: `Unable to Create Account`,
-                success: false
-        })})
+        })
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json({error: "registration", message: `Unable to Create Account`, success: false })
+    }
 }
 
 

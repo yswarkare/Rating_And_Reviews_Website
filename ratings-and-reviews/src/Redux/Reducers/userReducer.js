@@ -76,7 +76,15 @@ let userReducer = ( state = userState, action ) => {
             return stateCopy
 
         case Register_User:
-            
+            console.log(action.payload);
+            stateCopy.errors.registration.success = action.payload.data.success;
+            stateCopy.errors.registration.message = action.payload.data.message;
+            if (action.payload.data.success === true){
+                stateCopy.loginStatus.registrationRedirect = "/user-login"
+            } else {
+                stateCopy.errors.registration.error = action.payload.data.error;
+            }
+            console.log(stateCopy);
             return stateCopy
 
         case Is_User_Logged_In:
