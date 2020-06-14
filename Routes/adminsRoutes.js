@@ -4,7 +4,11 @@ const bcrypt = require("bcryptjs");
 const { userAuth } = require("../Utils/Auth");
 const { getAdminByEmailOrUsername } = require("../Utils/Validations")
 const validator = require("validator");
-const Admins = require("../Models/Admins"); 
+const Admins = require("../Models/Admins");
+const Users = require("../Models/Users");
+const Reviews = require("../Models/Reviews");
+const Ratings = require("../Models/Ratings");
+const Products = require("../Models/Products");
 
 router.get("/", async (req, res) => {
     try {
@@ -143,6 +147,40 @@ router.patch("/update-admin-password", userAuth, async (req, res) => {
         return res.json({updated, message: "Password changed successfully", success: true})
     } catch {
         return res.json({message: "Unable to update password", success: fasle})
+    }
+})
+
+router.patch("delete-user", userAuth, async (req, res) => {
+    try {
+        let user = await Users.findOne({_id: req.body.user});
+        try {
+            let rArray = await Reviews.find({user: req.body.user});
+            for (let i = 0; i < rArray.length; i++){
+                
+                Reviews.findOneAndRemove({_id: rArray[i]._id})
+            }
+        } catch (err) {
+            console.log(err);
+        }
+        try {
+            let rArr = await Ratings.find({user: req.body.user});
+            for (let i = 0; i < rArr.length; i++){
+                let product = Products.findOne({_id: rArr[i].product});
+                productRating = product.totalRatings
+                Ratings.findOneAndRemove({_id: rArr[i]._id})
+            }
+        } catch (err) {
+            console.log(err);
+        }
+        try {
+            let user01 = await Users.findOneAndRemove({_id: req.body.user});
+        } catch (err) {
+            console.log(err);
+            return res.json({message: "failed to delete user", success: false, error: `${err}`});
+        }
+    } catch (err) {
+        console.log(err);
+        return res.json({message: "user doesn't exists", success: false, error: `${err}`});
     }
 })
 

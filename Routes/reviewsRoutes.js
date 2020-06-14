@@ -24,7 +24,7 @@ router.patch("/get-user-review", userAuth, async (req, res) => {
 })
 
 router.patch("/post-user-review", userAuth, async (req, res) => {
-    console.log("in post user review => " + req.body);
+    // console.log("in post user review => " + req.body);
     try {
         const newReview = new Reviews({
             review : req.body.review,
@@ -92,9 +92,12 @@ router.patch("/delete-user-review", userAuth, async (req, res) => {
 })
 
 router.patch("/get-product-reviews", async (req, res) => {
-    console.log( "Get Product Review => " + JSON.stringify(req.body));
+    // console.log( "Get Product Review => " + JSON.stringify(req.body));
     try {
         let reviews = await Reviews.find({product: req.body.product}).populate("user").populate("product")
+        if (reviews === []){
+            return res.json({message: "Product has no reviews", success: false})
+        }
         return res.json({message: "Got All Product Reviews Successfully", success: true, reviews})
     } catch (err) {
         return res.json({message: "Failed to get product reviews", success: false, error: `${err}`})
