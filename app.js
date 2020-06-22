@@ -5,7 +5,7 @@ const cors = require("cors");
 const { success, error } = require("consola");
 const passport = require("passport");
 const { strategy } = require("./middlewares/passport");
-// const path = require("path");
+const path = require("path");
 
 
 const app = express()
@@ -15,9 +15,9 @@ app.use(express.json());
 if(process.env.NODE_ENV === "production"){
     app.use(express.static("ratings-and-reviews/build"));
     
-    // app.get("*", (req, res) => {
-    //     res.sendFile(path.resolve(__dirname, "ratings-and-reviews", "build", "index.html"));
-    // })
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "ratings-and-reviews", "build", "index.html"));
+    })
 }
 
 
