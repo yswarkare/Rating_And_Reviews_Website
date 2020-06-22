@@ -12,15 +12,6 @@ const app = express()
 
 app.use(express.json());
 
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static("ratings-and-reviews/build"));
-    
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "ratings-and-reviews", "build", "index.html"));
-    })
-}
-
-
 app.use(cors());
 app.use(passport.initialize());
 
@@ -83,6 +74,15 @@ app.use("/api/ratings", ratingsRouter);
 const reviewsRouter = require("./Routes/reviewsRoutes");
 
 app.use("/api/reviews", reviewsRouter);
+
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static("ratings-and-reviews/build"));
+    
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "ratings-and-reviews", "build", "index.html"));
+    })
+}
 
 
 module.exports = app;
