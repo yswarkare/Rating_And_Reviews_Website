@@ -6,13 +6,37 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const { SECRET } = require("../Config/config")
 const { strategy } = require("../middlewares/passport");
-const { validateAdmin, validateUser, validateEmailId, validateUsername } = require("./Validations");
+const { validateAdmin, validateUser, validateEmailId, validateUsername, validatePassword } = require("./Validations");
 
 passport.use(
     strategy
 );
 
-const userRegistration = async (userData, res) => {
+const userRegistration = async (user, res) => {
+
+    let userData = user;
+
+    userData.firstName = (user.firstName).trim();
+    userData.middleName = (user.middleName).trim();
+    userData.lastName = (user.lastName).trim();
+    userData.username = (user.username).trim();
+    userData.emailId = (user.emailId).trim();
+    
+    if (userData.firstName === "") {
+        return res.json({success: false, message: "First name is empty"});
+    }
+
+    if (userData.lastName === "") {
+        return res.json({success: false, message: "Last name is empty", error: null});
+    }
+
+    if (userData.username === "") {
+        return res.json({success: false, message: "username is empty", error: null});
+    }
+
+    if (userData.emailId === "") {
+        return res.json({success: false, message: "email ID is empty", error: null});
+    }
 
     const usernameLowercase = (userData.username).toLowerCase();
     const emailIdLowercase = (userData.emailId).toLowerCase();
@@ -30,6 +54,14 @@ const userRegistration = async (userData, res) => {
     let emailIdRegistered = await validateEmailId(emailIdLowercase);
     if (emailIdRegistered){
         return res.json({error: "email", message: `Email ID already Registered`, success: false});
+    }
+
+    // Validate Password
+
+    let validPassword = await validatePassword(userData);
+
+    if (validPassword.success === false) {
+        return res.json(validPassword);
     }
 
     // Create Hashed Password Function
