@@ -131,6 +131,11 @@ let userReducer = ( state = userState, action ) => {
         case Set_Login_Redirect:
             console.log(action.payload)
             Cookies.set("userToken", action.payload.data.token)
+            if (action.payload.data.success === false) {
+                state.errors.login.success = false;
+                state.errors.login.message = action.payload.data.message;
+                state.loginStatus.loginRedirect = "/user-login"
+            }
             state.loginStatus.loggedIn = action.payload.data.success;
             state.loginStatus.userIsAdmin = action.payload.data.userIsAdmin;
             state.loginStatus.emailId = action.payload.data.emailId;

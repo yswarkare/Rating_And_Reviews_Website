@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import LoginErrors from "./LoginErrors";
 import { Link } from "react-router-dom"
 import { getUsernameOrEmailId, getPassword, userLogin } from "../../Redux/Actions/userActions";
 
@@ -32,6 +33,7 @@ class UserLogin extends Component {
                             Login
                         </Button>
                     </Link>
+                    <LoginErrors></LoginErrors>
                 </div>
             </div>
         )
@@ -53,7 +55,7 @@ const mapStateToProps = (state) => {
      return {
         user: state.users.user,
         loginDetails: state.users.loginDetails,
-        errors: state.users.inputErrors,
+        errors: state.users.errors,
         loginStatus: state.users.loginStatus,
         headers: state.users.headers
     };

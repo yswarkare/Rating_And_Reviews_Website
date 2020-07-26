@@ -30,26 +30,30 @@ const validateEmailId = async (emailId) => {
 
 const validatePassword = async (user) => {
     let errors = []
+    let password = (user.password).trim()
     try {
-        if (user.password === user.username) {
+        if (password === "") {
+            return ({success: false, message: "Password field is empty."})
+        }
+        if (password === user.username) {
             return ({success: false, message: "Don't user your username as password."})
         }
-        if (user.password === user.emailId) {
+        if (password === user.emailId) {
             return ({success: false, message: "Don't user your email ID as password."})
         }
-        if (user.password.length < 8) {
+        if (password.length < 8) {
             errors.push("at least 8 characters");
         }
-        if (user.password.search(/[A-Z]/g) < 0) {
+        if (password.search(/[A-Z]/g) < 0) {
             errors.push("at least one uppercase letter"); 
         }
-        if (user.password.search(/[a-z]/g) < 0) {
+        if (password.search(/[a-z]/g) < 0) {
             errors.push("at least one lowercase letter"); 
         }
-        if (user.password.search(/[0-9]/g) < 0) {
+        if (password.search(/[0-9]/g) < 0) {
             errors.push("at least one digit");
         }
-        if (user.password.search(/[^a-zA-Z\d]/g) < 0){
+        if (password.search(/[^a-zA-Z\d]/g) < 0){
             errors.push("at least one special character")
         }
         if (errors.length > 0) {

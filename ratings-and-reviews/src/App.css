@@ -152,19 +152,17 @@ a {
   margin-top: 2rem;
   border-radius: 5px;
   background-color: #f2f2f2;
-  padding-top: 30px;
-  padding-bottom: 20px;
+  padding: 2rem;
   margin-bottom: 2rem;
   border-style: solid;
   border-width: thin;
   border-color: aliceblue;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
-  justify-content: center;
+  justify-content: stretch;
   align-items: center;
   grid-gap: 0.5rem;
-  /* padding: 0.5rem; */
-  width: 25%;
+  width: 40%;
   height:80%;
   align-self: center;
 }

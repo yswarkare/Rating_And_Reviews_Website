@@ -79,7 +79,7 @@ class Header extends Component {
                         {this.props.loginStatus.loggedIn === true && 
                             <div className="user-account-link">
                             <NavItem>
-                            <Link to="/user-account">User</Link>
+                            <Link to="/user-account">{this.props.user.username}</Link>
                             </NavItem>
                             </div>}
                         {this.props.loginStatus.loggedIn === true && 
