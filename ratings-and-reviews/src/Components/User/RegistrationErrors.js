@@ -3,17 +3,40 @@ import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 
 class RegistrationErrors extends Component {
+    
     render() {
         return (
-            <div>
+            <div className="registration-errors pt-4">
             {
                 this.props.errors.registration.success === true &&
                 <p>{this.props.errors.registration.message}</p>
             }
             {
+                this.props.errors.password.success === false &&
+                <p>{this.props.errors.password.message}</p>
+            }
+            {
                 this.props.errors.registration.success === false &&
                 <p>{this.props.errors.registration.message}</p>
             }
+            <ul className="password-errors">
+            {
+                this.props.errors.registration.success === false && this.props.errors.registration.error === "Empty Fields" && this.props.errors.registration.errors.map((error, index) => {
+                    return (
+                        <li key={index}><span>{error}</span></li>
+                    )
+                })
+            }
+            </ul>
+            <ul className="password-errors">
+            {
+                this.props.errors.registration.success === false && this.props.errors.registration.error === "password" && this.props.errors.registration.errors.map((error, index) => {
+                    return (
+                        <li key={index}><span>{error}</span></li>
+                    )
+                })
+            }
+            </ul>
             </div>
         );
     }

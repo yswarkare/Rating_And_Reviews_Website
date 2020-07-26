@@ -50,6 +50,7 @@ let userReducer = ( state = userState, action ) => {
 
         case Set_User_Username:
             stateCopy.user.username = action.payload
+            stateCopy.errors.registration.success = null;
             return stateCopy
 
         case Set_User_Email_Id:
@@ -60,19 +61,24 @@ let userReducer = ( state = userState, action ) => {
             } else {
                 stateCopy.errors.emailId.success = true;
             }
+            stateCopy.errors.registration.success = null;
             return stateCopy
 
         case Set_First_Password:
             stateCopy.firstPassword = action.payload
+            stateCopy.errors.registration.success = null;
             return stateCopy
 
         case Set_Second_Password:
             if (stateCopy.firstPassword === action.payload){
-                stateCopy.user.password = action.payload
-                stateCopy.errors.password = false
+                stateCopy.user.password = action.payload 
+                stateCopy.errors.password.success = true;
+                stateCopy.errors.password.message = "";
             } else {
-                stateCopy.errors.password = true
+                stateCopy.errors.password.success = false;
+                stateCopy.errors.password.message = "Password didn't matched";
             }
+            stateCopy.errors.registration.success = null;
             return stateCopy
 
         case Register_User:
@@ -82,9 +88,11 @@ let userReducer = ( state = userState, action ) => {
             if (action.payload.data.success === true){
                 stateCopy.loginStatus.registrationRedirect = "/user-login";
                 stateCopy.loginStatus.userRegistered = true;
+                stateCopy.errors.registration.error = null
             } else {
                 stateCopy.errors.registration.error = action.payload.data.error;
-                stateCopy.loginStatus.registrationRedirect = "/";
+                stateCopy.errors.registration.errors = action.payload.data.errors;
+                stateCopy.loginStatus.registrationRedirect = "/user-registration";
             }
             console.log(stateCopy);
             return stateCopy
@@ -123,6 +131,11 @@ let userReducer = ( state = userState, action ) => {
         case Set_Login_Redirect:
             console.log(action.payload)
             Cookies.set("userToken", action.payload.data.token)
+            if (action.payload.data.success === false) {
+                state.errors.login.success = false;
+                state.errors.login.message = action.payload.data.message;
+                state.loginStatus.loginRedirect = "/user-login"
+            }
             state.loginStatus.loggedIn = action.payload.data.success;
             state.loginStatus.userIsAdmin = action.payload.data.userIsAdmin;
             state.loginStatus.emailId = action.payload.data.emailId;

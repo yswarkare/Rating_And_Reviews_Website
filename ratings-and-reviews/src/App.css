@@ -84,9 +84,10 @@ div.input-group{
 
 .App {
   text-align: center;
-  background-color: #ffffff;
+  background-color: rgb(22, 22, 22);
+  padding-bottom: 300px;
+  color: beige;
 }
-
 a {
   text-decoration: none;
 }
@@ -151,22 +152,22 @@ a {
   margin-top: 2rem;
   border-radius: 5px;
   background-color: #f2f2f2;
-  padding-top: 30px;
-  padding-bottom: 20px;
+  padding: 2rem;
   margin-bottom: 2rem;
   border-style: solid;
   border-width: thin;
   border-color: aliceblue;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
-  justify-content: center;
+  justify-content: stretch;
   align-items: center;
   grid-gap: 0.5rem;
-  /* padding: 0.5rem; */
-  width: 25%;
+  width: 40%;
   height:80%;
   align-self: center;
 }
+
+/*  User Registration Components */
 
 .user-registration-container{
   margin-top: 2rem;
@@ -191,6 +192,26 @@ a {
   padding: 25px;
   /* padding: 0.5rem; */
   align-self: center;
+}
+
+.registration-errors {
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 0.5rem;
+  margin: 0rem 3rem 1rem 3rem;
+  padding: 0rem 3rem 1rem 3rem;
+  align-content: center;
+  align-items: center;
+}
+
+.password-errors {
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 0.25rem;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  text-align: left;
 }
 
 /* Categories Components */

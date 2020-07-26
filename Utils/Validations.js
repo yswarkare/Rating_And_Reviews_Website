@@ -26,6 +26,49 @@ const validateEmailId = async (emailId) => {
     }
 }
 
+// Validate Password
+
+const validatePassword = async (user) => {
+    let errors = []
+    let password = (user.password).trim()
+    try {
+        if (password === "") {
+            return ({success: false, message: "Password field is empty."})
+        }
+        if (password === user.username) {
+            return ({success: false, message: "Don't user your username as password."})
+        }
+        if (password === user.emailId) {
+            return ({success: false, message: "Don't user your email ID as password."})
+        }
+        if (password.length < 8) {
+            errors.push("at least 8 characters");
+        }
+        if (password.search(/[A-Z]/g) < 0) {
+            errors.push("at least one uppercase letter"); 
+        }
+        if (password.search(/[a-z]/g) < 0) {
+            errors.push("at least one lowercase letter"); 
+        }
+        if (password.search(/[0-9]/g) < 0) {
+            errors.push("at least one digit");
+        }
+        if (password.search(/[^a-zA-Z\d]/g) < 0){
+            errors.push("at least one special character")
+        }
+        if (errors.length > 0) {
+            console.table({success: false, error: "password", message: "Your user.password must contain ",errors: `${errors}`});
+            return ({success: false, error: "password", message: "Your password must contain ",errors: errors});
+        }
+        console.table({success: true, message: "password is valid."});
+        return ({success: true, message: "password is valid."});
+    } catch (err) {
+        console.log(`${err}`)
+        return ({success: false, message: "failed to validate password. Password must be at least 8 characters, combinations of numbers, letters and special characters.", error: `${err}`});
+    }
+}
+
+
 const validateAdmin = async (userData) => {
     
     if (userData._id) {
@@ -100,10 +143,11 @@ const getUserByEmailOrUsername = async (userData) => {
 }
 
 module.exports = {
-    validateAdmin,
-    validateUser,
-    validateEmailId,
     validateUsername,
+    validateEmailId,
+    validatePassword,
+    validateUser,
+    validateAdmin,
     getUserByEmailOrUsername,
     getAdminByEmailOrUsername,
 }

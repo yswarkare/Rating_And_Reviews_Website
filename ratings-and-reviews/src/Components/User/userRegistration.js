@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link, Redirect } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import RegistrationErrors from "./RegistrationErrors";
@@ -68,11 +68,10 @@ class UserRegistration extends Component {
                     <TextField type="password" onChange={(e)=>{this.onChangeSetPassword(e.target.value)}} autoComplete="current-password" label="Password" variant="outlined" />
                     <TextField type="password" onChange={(e)=>{this.onChangeSetRepeatPassword(e.target.value)}} autoComplete="current-password" label="Repeat Password" variant="outlined" />
                     <div></div>
-                    <Link to={this.props.loginStatus.registrationRedirect}>
-                        <Button onClick={()=>{this.onClickRegisterUser()}} variant="contained" color="primary">
-                            Register
-                        </Button>
-                    </Link>
+                    <Button onClick={()=>{this.onClickRegisterUser()}} variant="contained" color="primary">
+                        Register
+                    </Button>
+                    
                 </div>
             </div>
                 <div>
@@ -100,8 +99,8 @@ UserRegistration.propTypes = {
 const mapStateToProps = (state) => {
     return {
         user: state.users.user,
-        errors: state.users.inputErrors,
-        loginStatus: state.users.loginStatus.registrationRedirect
+        errors: state.users.errors,
+        loginStatus: state.users.loginStatus
     };
 }
 

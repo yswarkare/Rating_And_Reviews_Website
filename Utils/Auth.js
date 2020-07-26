@@ -6,13 +6,47 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const { SECRET } = require("../Config/config")
 const { strategy } = require("../middlewares/passport");
-const { validateAdmin, validateUser, validateEmailId, validateUsername } = require("./Validations");
+const { validateAdmin, validateUser, validateEmailId, validateUsername, validatePassword } = require("./Validations");
 
 passport.use(
     strategy
 );
 
-const userRegistration = async (userData, res) => {
+const userRegistration = async (user, res) => {
+
+    let errors = [];
+    let userData = user;
+
+    userData.firstName = (user.firstName).trim();
+    userData.middleName = (user.middleName).trim();
+    userData.lastName = (user.lastName).trim();
+    userData.username = (user.username).trim();
+    userData.emailId = (user.emailId).trim();
+    userData.password = (user.password).trim();
+    
+    if (userData.firstName === "") {
+        errors.push("First name is empty");
+    }
+
+    if (userData.middleName === "") {
+        errors.push("Middle name is empty");
+    }
+
+    if (userData.lastName === "") {
+        errors.push("Last name is empty");
+    }
+
+    if (userData.username === "") {
+        errors.push("username is empty");
+    }
+
+    if (userData.emailId === "") {
+        errors.push("email ID is empty");
+    }
+
+    if (errors.length > 0) {
+        return res.json({success: false, message: "Following fields are empty", error: "Empty Fields", errors: errors});
+    }
 
     const usernameLowercase = (userData.username).toLowerCase();
     const emailIdLowercase = (userData.emailId).toLowerCase();
@@ -30,6 +64,14 @@ const userRegistration = async (userData, res) => {
     let emailIdRegistered = await validateEmailId(emailIdLowercase);
     if (emailIdRegistered){
         return res.json({error: "email", message: `Email ID already Registered`, success: false});
+    }
+
+    // Validate Password
+
+    let validPassword = await validatePassword(userData);
+
+    if (validPassword.success === false) {
+        return res.json(validPassword);
     }
 
     // Create Hashed Password Function
@@ -59,7 +101,20 @@ const userRegistration = async (userData, res) => {
 }
 
 
-const userLogin = async (userData, res) => {
+const userLogin = async (userInfo, res) => {
+
+    let userData = userInfo;
+    userData.username = userInfo.username.trim();
+    userData.emailId = userInfo.emailId.trim();
+    userData.password = userInfo.password.trim();
+
+    if (userData.username === "" && userData.emailId === "") {
+        return res.json({success: false, message: "Enter your username or email ID to login."})
+    }
+
+    if (userData.password === "") {
+        return res.json({success: false, message: "Password field is empty, enter your password to login."})
+    }
 
     const userIsAdmin = await validateAdmin(userData);
     if (userIsAdmin === true){
