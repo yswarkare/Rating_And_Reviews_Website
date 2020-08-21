@@ -47,7 +47,7 @@ class Header extends Component {
         // console.log("Props in header =>" + JSON.stringify(this.props))
         return(
             <div className="header">
-                <Link to="/"><h1>Ratings and Reviews</h1></Link>
+                <Link to="/"><h1>Ratekaro</h1></Link>
                 <Navbar>
                     <Nav>
                     <div className="header-navbar">
